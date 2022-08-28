@@ -496,4 +496,9 @@ sketch
 
 # Ignore code-workspaces
 
+# Default ignored files
+/shelf/
+/workspace.xml
+
+
 # End of https://www.toptal.com/developers/gitignore/api/dotnetcore,visualstudiocode,kotlin,react,angular,csharp 
