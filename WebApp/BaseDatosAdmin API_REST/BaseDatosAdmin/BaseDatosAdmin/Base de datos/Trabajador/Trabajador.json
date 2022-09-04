@@ -1,0 +1,30 @@
+{
+  "Trabajador": [
+    {
+      "NumeroCedula": 309380123,
+      "Nombre": "Pablo",
+      "Apellidos": "Naranjo Monge",
+      "FechaIngreso": "12/09/2007",
+      "Rol": "Mecánico de frenos",
+      "Password": "12345678",
+      "FechaNacimiento": "02/10/2000",
+      "Administrador": {
+        "Administra": false,
+        "Sucursal": null
+      }
+    },
+    {
+      "NumeroCedula": 102930292,
+      "Nombre": "Jose",
+      "Apellidos": "Manzana",
+      "FechaIngreso": "11/01/2002",
+      "Rol": "Ingeniero Eléctrico",
+      "Password": "12345678",
+      "FechaNacimiento": "02/10/1998",
+      "Administrador": {
+        "Administra": false,
+        "Sucursal": null
+      }
+    }
+  ]
+} 
