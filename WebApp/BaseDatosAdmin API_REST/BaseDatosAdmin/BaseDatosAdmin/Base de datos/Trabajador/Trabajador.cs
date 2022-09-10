@@ -1,9 +1,12 @@
 ﻿namespace BaseDatosAdmin.Base_de_datos.Trabajador
 {
-
-    public class TrabajadorList
+    public class TrabajadorList : Entidad<Trabajador>
     {
-        public List <Trabajador> trabajadores { get; set; }
+        public TrabajadorList (): base("Trabajador.json")
+        {
+            
+        }
+
     }
 
     public class Trabajador
@@ -16,12 +19,28 @@
         public string Password { get; set; }
         public string FechaNacimiento { get; set; }
         public Administrador Administrador { get; set; }
+
+        public Trabajador (int numeroCedula, string nombre, string apellidos,
+            string fechaIngreso, string rol, string password, string fechaNacimiento)
+        {
+            NumeroCedula = numeroCedula;
+            Nombre = nombre;
+            Apellidos = apellidos;
+            FechaIngreso = fechaIngreso;
+            Rol = rol;
+            Password = password;
+            FechaNacimiento = fechaNacimiento;
+        }
+
+       
+        
     }
+
 
 
     public class Administrador
     {
-        public bool Administra { get; set; }
+        public bool? Administra { get; set; }
         public object? Sucursal { get; set; }
     }
 }
