@@ -1,5 +1,13 @@
 ﻿namespace BaseDatosAdmin.Base_de_datos.Sucursal
 {
+    public class SucursalList : Entidad<Sucursal>
+    {
+        public SucursalList() : base("Sucursal.json")
+        {
+
+        }
+
+    }
     public class Sucursal
     {
         public string NombreSuc { set; get; }

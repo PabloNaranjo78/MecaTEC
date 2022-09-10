@@ -1,5 +1,13 @@
 ﻿namespace BaseDatosAdmin.Base_de_datos.Cliente_direcciones
 {
+    public class Cliente_DireccionesList : Entidad<Cliente_Direcciones>
+    {
+        public Cliente_DireccionesList() : base("Cliente_Direcciones.json")
+        {
+
+        }
+
+    }
     public class Cliente_Direcciones
     {
         public int IDCliente { get; set; }

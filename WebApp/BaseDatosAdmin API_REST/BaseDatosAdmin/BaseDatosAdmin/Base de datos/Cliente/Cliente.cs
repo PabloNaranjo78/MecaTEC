@@ -1,5 +1,13 @@
 ﻿namespace BaseDatosAdmin.Base_de_datos.Cliente
 {
+    public class ClienteList : Entidad<Cliente>
+    {
+        public ClienteList() : base("Cliente.json")
+        {
+
+        }
+
+    }
     public class Cliente
     {
         public int IDCliente { get; set; }

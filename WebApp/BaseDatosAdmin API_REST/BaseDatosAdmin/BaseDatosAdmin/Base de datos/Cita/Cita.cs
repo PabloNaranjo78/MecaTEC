@@ -1,5 +1,13 @@
 ﻿namespace BaseDatosAdmin.Base_de_datos.Cita
 {
+    public class CitaList : Entidad<Cita>
+    {
+        public CitaList() : base("Cita.json")
+        {
+
+        }
+
+    }
     public class Cita
     {
         public int Placa { get; set; }

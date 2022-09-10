@@ -1,5 +1,13 @@
 ﻿namespace BaseDatosAdmin.Base_de_datos.Proveedor
 {
+    public class ProveedorList : Entidad<Proveedor>
+    {
+        public ProveedorList() : base("Proveedor.json")
+        {
+
+        }
+
+    }
     public class Proveedor
     {
         public int CedulaJur { set; get; }

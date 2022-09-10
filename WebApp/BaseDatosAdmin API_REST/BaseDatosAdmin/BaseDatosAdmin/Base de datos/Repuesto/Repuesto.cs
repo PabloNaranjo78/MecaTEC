@@ -1,5 +1,13 @@
 ﻿namespace BaseDatosAdmin.Base_de_datos.Repuesto
 {
+    public class RepuestoList : Entidad<Repuesto>
+    {
+        public RepuestoList() : base("Repuesto.json")
+        {
+
+        }
+
+    }
     public class Repuesto
     {
         public string NombreRep { get; set; }
