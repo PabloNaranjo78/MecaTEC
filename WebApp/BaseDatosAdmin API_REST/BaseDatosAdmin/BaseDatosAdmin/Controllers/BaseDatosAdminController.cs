@@ -10,31 +10,35 @@ namespace BaseDatosAdmin.Controllers
     [ApiController]
     public class BaseDatosAdminController : ControllerBase
     {
+        TrabajadorList trabajadorList = new TrabajadorList();
+
         [HttpGet]
-        public async Task <ActionResult<List<Trabajador>>> Get()
+        [Route("trabajador/")]
+        public async Task <ActionResult<List<Trabajador>>> Get([FromForm] int cedula)
         {
 
+            var trabajadortemp = trabajadorList.list.Find(t => t.NumeroCedula == cedula);
+
+            if (trabajadortemp == null)
+                return BadRequest("No se ha encontrado el trabajador " + cedula);
+            return Ok(trabajadortemp);
+        }
+
+        [HttpPost]
+        [Route("trabajador/")]
+        public async Task<ActionResult<List<Trabajador>>> AddTrabajador([FromForm] int cedula, [FromForm] string nombre, [FromForm] string apellidos, 
+            [FromForm] string fechaIngreso, [FromForm] string rol, [FromForm] string password, 
+            [FromForm] string fechaNacimiento)
+        {
             TrabajadorList trabajadorList = new TrabajadorList();
-            string list = trabajadorList.jsonInfo;
+            var trabajadortemp = trabajadorList.list.Find(t => t.NumeroCedula == cedula);
+            if (trabajadortemp == null) {
+                Trabajador trabajador = new Trabajador(cedula, nombre, apellidos, fechaIngreso, rol, password, fechaNacimiento);
+                string result = trabajadorList.addElementToJson(trabajador);
+                return Ok(result);
+            }
 
-            Trabajador temp = new Trabajador(303090250, "Juann", "Monge", "1/3/2222", "Hola", "1111111", "3/3/10");
-            trabajadorList.addElementToJson(temp);
-            list = trabajadorList.jsonInfo;
-
-
-            //string path = @"../../BaseDatosAdmin/BaseDatosAdmin/Base de datos/Trabajador/Trabajador.json";
-
-            //StreamReader jsonStream = new StreamReader(path);
-
-            //var json = jsonStream.ReadToEnd();
-            //Console.WriteLine(json);
-            //List<Trabajador> list = JsonConvert.DeserializeObject<List<Trabajador>>(json);
-
-            //var jsonS = JsonConvert.SerializeObject(list);
-            //Console.WriteLine("-->" + jsonS);
-
-
-            return Ok(list);
+            return BadRequest("Ya existe un trabajador bajo esa cédula");
         }
 
 

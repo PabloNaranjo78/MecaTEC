@@ -18,7 +18,6 @@
         public string Rol { get; set; }
         public string Password { get; set; }
         public string FechaNacimiento { get; set; }
-        public Administrador Administrador { get; set; }
 
         public Trabajador (int numeroCedula, string nombre, string apellidos,
             string fechaIngreso, string rol, string password, string fechaNacimiento)
@@ -36,11 +35,4 @@
         
     }
 
-
-
-    public class Administrador
-    {
-        public bool? Administra { get; set; }
-        public object? Sucursal { get; set; }
-    }
 }

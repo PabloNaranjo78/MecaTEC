@@ -12,7 +12,7 @@ namespace BaseDatosAdmin.Base_de_datos
 
         private StreamReader reader;
 
-        private List<T> list { get; set; }
+        public List<T> list { get; set; }
 
         public string jsonInfo { get; set; }
 
