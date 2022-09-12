@@ -2,7 +2,7 @@
 {
     public class ClienteList : Entidad<Cliente>
     {
-        public ClienteList() : base("Cliente.json")
+        public ClienteList() : base("Cliente/Cliente.json")
         {
 
         }

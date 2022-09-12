@@ -2,7 +2,7 @@
 {
     public class Admin_SucursalList : Entidad<Admin_Sucursal>
     {
-        public Admin_SucursalList() : base("Admin_Sucursal.json")
+        public Admin_SucursalList() : base("Admin_Sucursal/Admin_Sucursal.json")
         {
 
         }

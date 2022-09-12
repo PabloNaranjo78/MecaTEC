@@ -3,7 +3,7 @@
 
     public class Repuestos_ModelosList : Entidad<Repuestos_Modelos>
     {
-        public Repuestos_ModelosList() : base("Repuestos_Modelos.json")
+        public Repuestos_ModelosList() : base("Repuestos_Modelos/Repuestos_Modelos.json")
         {
 
         }

@@ -3,7 +3,7 @@
 
     public class Servicios_SucursalList : Entidad<Servicios_Sucursal>
     {
-        public Servicios_SucursalList() : base("Servicios_Sucursal.json")
+        public Servicios_SucursalList() : base("Servicios_Sucursal/Servicios_Sucursal.json")
         {
 
         }

@@ -4,25 +4,26 @@ using Microsoft.AspNetCore.Server.IIS.Core;
 
 namespace BaseDatosAdmin.Base_de_datos
 {
-    public abstract class Entidad <T>
+    public abstract class Entidad<T>
     {
         private string jsonFileName { get; set; }
 
-        private string path = @"../../BaseDatosAdmin/BaseDatosAdmin/Base de datos/Trabajador/";
+        private string path = @"../../BaseDatosAdmin/BaseDatosAdmin/Base de datos/";
 
-        private StreamReader reader;
+        private StreamReader? reader;
 
-        public List<T> list { get; set; }
+        public List<T>? list { get; set; }
 
         public string jsonInfo { get; set; }
 
         public Entidad(string jsonFileName)
         {
+
             this.jsonFileName = jsonFileName;
             this.jsonInfo = this.getJsonString();
             this.loadJson();
 
-        } 
+        }
         public string getJsonString()
         {
             reader = new StreamReader(this.path + this.jsonFileName);

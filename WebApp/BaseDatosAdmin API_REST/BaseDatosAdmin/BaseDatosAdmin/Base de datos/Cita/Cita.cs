@@ -2,7 +2,7 @@
 {
     public class CitaList : Entidad<Cita>
     {
-        public CitaList() : base("Cita.json")
+        public CitaList() : base("Cita/Cita.json")
         {
 
         }

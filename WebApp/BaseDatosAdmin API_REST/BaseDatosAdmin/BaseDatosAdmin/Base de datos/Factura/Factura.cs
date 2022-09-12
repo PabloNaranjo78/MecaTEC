@@ -2,7 +2,7 @@
 {
     public class FacturaList : Entidad<Factura>
     {
-        public FacturaList() : base("Factura.json")
+        public FacturaList() : base("Factura/Factura.json")
         {
 
         }

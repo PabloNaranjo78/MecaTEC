@@ -2,7 +2,7 @@
 {
     public class TrabajadorList : Entidad<Trabajador>
     {
-        public TrabajadorList (): base("Trabajador.json")
+        public TrabajadorList (): base("Trabajador/Trabajador.json")
         {
             
         }

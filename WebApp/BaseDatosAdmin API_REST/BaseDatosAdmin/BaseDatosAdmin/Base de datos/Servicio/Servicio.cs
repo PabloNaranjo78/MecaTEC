@@ -2,7 +2,7 @@
 {
     public class ServicioList : Entidad<Servicio>
     {
-        public ServicioList() : base("Servicio.json")
+        public ServicioList() : base("Servicio/Servicio.json")
         {
 
         }
