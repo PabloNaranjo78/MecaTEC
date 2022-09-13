@@ -28,11 +28,11 @@ namespace BaseDatosAdmin.Controllers
         ServicioList servicioList = new ServicioList();
         CitaList citaList = new CitaList();
         Cliente_DireccionesList cliente_DireccionesList = new Cliente_DireccionesList();
-        Cliente_Telefonos cliente_Telefonos = new Cliente_Telefonos();
-        Servicios_Sucursal servicios_Sucursal = new Servicios_Sucursal();
-        Servicios_Cita servicios_Cita = new Servicios_Cita();
-        Admin_Sucursal admin_Sucursal = new Admin_Sucursal();
-        Factura factura = new Factura();
+        Cliente_TelefonosList cliente_TelefonosList = new Cliente_TelefonosList();
+        Servicios_SucursalList servicios_SucursalList = new Servicios_SucursalList();
+        Servicios_CitaList servicios_CitaList = new Servicios_CitaList();
+        Admin_SucursalList admin_SucursalList = new Admin_SucursalList();
+        FacturaList facturaList = new FacturaList();
 
         [HttpGet]
         [Route("trabajador/")]
@@ -227,7 +227,7 @@ namespace BaseDatosAdmin.Controllers
             [FromForm] int idMecanico, [FromForm] int idAyudante, [FromForm] string sucursal, [FromForm] int idCliente)
         {
             var citaTemp = citaList.list.Find(c => c.Placa == placa);
-
+            //Agregar fecha como key
 
             if (citaTemp == null)
             {
@@ -285,14 +285,15 @@ namespace BaseDatosAdmin.Controllers
         public async Task<ActionResult<List<Cliente_Direcciones>>> addClienteDirecciones([FromForm] int idCliente,
             [FromForm] string provincia, [FromForm] string canton, [FromForm] string distrito)
         {
-            var clielteDireccionesTemp1 = cliente_DireccionesList.list.Find(c => c.IDCliente == idCliente);
-            var clielteDireccionesTemp2 = cliente_DireccionesList.list.Find(c => c.Provincia == provincia);
-            var clielteDireccionesTemp3 = cliente_DireccionesList.list.Find(c => c.Canton == canton);
-            var clielteDireccionesTemp4 = cliente_DireccionesList.list.Find(c => c.Distrito == distrito);
+            
             var verificadorCliente = clienteList.list.Find(c => c.IDCliente == idCliente);
 
             if (verificadorCliente != null)
             {
+                var clielteDireccionesTemp1 = cliente_DireccionesList.list.Find(c => c.IDCliente == idCliente);
+                var clielteDireccionesTemp2 = cliente_DireccionesList.list.Find(c => c.Provincia == provincia);
+                var clielteDireccionesTemp3 = cliente_DireccionesList.list.Find(c => c.Canton == canton);
+                var clielteDireccionesTemp4 = cliente_DireccionesList.list.Find(c => c.Distrito == distrito);
                 if ((clielteDireccionesTemp1 == null)
                || (clielteDireccionesTemp2 == null)
                || (clielteDireccionesTemp3 == null)
@@ -303,8 +304,92 @@ namespace BaseDatosAdmin.Controllers
                     return Ok(result);
                 }
                 else return BadRequest("Dirección ya registrada");
+            }
+            return BadRequest("Cliente no existe");
+        }
 
+        //
+        [HttpGet]
+        [Route("cliente-telefonos/")]
+        public async Task<ActionResult<List<Cliente_Telefonos>>> GetClienteTelefonos([FromForm] int idCliente)
+        {
 
+            var clienteTelefonosTemp = cliente_TelefonosList.list.FindAll(c => c.IDCliente == idCliente);
+
+            if (clienteTelefonosTemp == null)
+                return NotFound("No se ha encontrado la telefono " + idCliente);
+            return Ok(clienteTelefonosTemp);
+        }
+
+        [HttpGet]
+        [Route("all-cliente-telefonos/")]
+        public async Task<ActionResult<List<Cliente_Telefonos>>> GetAllClienteTelefonos()
+        {
+            return Ok(cliente_TelefonosList.list);
+        }
+        [HttpPost]
+        [Route("cliente-telefonos/")]
+        public async Task<ActionResult<List<Cliente_Telefonos>>> addClienteTelefonos([FromForm] int idCliente, [FromForm] int telefono)
+        {
+            
+            var verificadorCliente = clienteList.list.Find(c => c.IDCliente == idCliente);
+
+            if (verificadorCliente != null)
+            {
+                var clielteTelefonosTemp1 = cliente_TelefonosList.list.Find(c => c.IDCliente == idCliente);
+                var clielteTelefonosTemp2 = cliente_TelefonosList.list.Find(c => c.Telefono == telefono);
+                if ((clielteTelefonosTemp1 == null)
+               || (clielteTelefonosTemp2 == null))
+                {
+                    Cliente_Telefonos cliente_Telefonos = new Cliente_Telefonos(idCliente, telefono);
+                    string result = cliente_TelefonosList.addElementToJson(cliente_Telefonos);
+                    return Ok(result);
+                }
+                else return BadRequest("Telefono ya registrada");
+            }
+            return BadRequest("Cliente no existe");
+        }
+
+        //
+        [HttpGet]
+        [Route("servicios-sucursal/")]
+        public async Task<ActionResult<List<Servicios_Sucursal>>> GetServiciosSucursal([FromForm] string servicio)
+        {
+
+            var servicioSucursalTemp = servicios_SucursalList.list.FindAll(c => c.Servicio == servicio);
+
+            if (servicioSucursalTemp == null)
+                return NotFound("No se ha encontrado la sucursal " + servicio);
+            return Ok(servicioSucursalTemp);
+        }
+
+        [HttpGet]
+        [Route("all-servicios-sucursal/")]
+        public async Task<ActionResult<List<Servicios_Sucursal>>> GetAllServiciosSucursa()
+        {
+            return Ok(servicios_SucursalList.list);
+        }
+        [HttpPost]
+        [Route("servicios-sucursal/")]
+        public async Task<ActionResult<List<Servicios_Sucursal>>> addServiciosSucursa([FromForm] string servicio, [FromForm] string sucursal)
+        {
+
+            var verificadorServicio = servicioList.list.Find(c => c.NombreServ == servicio);
+            var verificadorSucursal = sucursalList.list.Find(c => c.NombreSuc == sucursal);
+
+            if (verificadorServicio != null && verificadorSucursal != null)
+            {
+                var serviciosSucursalTemp1 = servicios_SucursalList.list.Find(c => c.Sucursal == sucursal);
+                var serviciosSucursalTemp2 = servicios_SucursalList.list.Find(c => c.Servicio == servicio);
+
+                if ((serviciosSucursalTemp1 == null)
+               || (serviciosSucursalTemp2 == null))
+                {
+                    Servicios_Sucursal servicios_sucursal = new Servicios_Sucursal(servicio, sucursal);
+                    string result = servicios_SucursalList.addElementToJson(servicios_sucursal);
+                    return Ok(result);
+                }
+                else return BadRequest("Servicio ya existente");
             }
             return BadRequest("Cliente no existe");
         }

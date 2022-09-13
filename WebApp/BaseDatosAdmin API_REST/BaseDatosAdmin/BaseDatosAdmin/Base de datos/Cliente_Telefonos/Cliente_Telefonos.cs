@@ -10,6 +10,12 @@
     }
     public class Cliente_Telefonos
     {
+        public Cliente_Telefonos(int idCliente, int telefono)
+        {
+            IDCliente = idCliente;
+            Telefono = telefono;
+        }
+
         public int IDCliente { get; set; }
         public int Telefono { get; set; }
   

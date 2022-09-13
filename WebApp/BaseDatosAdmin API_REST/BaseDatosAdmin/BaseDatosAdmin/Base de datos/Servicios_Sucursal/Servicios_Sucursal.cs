@@ -11,6 +11,12 @@
     }
     public class Servicios_Sucursal
     {
+        public Servicios_Sucursal(string servicio, string sucursal)
+        {
+            Servicio = servicio;
+            Sucursal = sucursal;
+        }
+
         public string Servicio { get; set; }
         public string Sucursal { get; set; }
     }
