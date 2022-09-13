@@ -11,7 +11,7 @@
 
     public class Trabajador
     {
-        public int NumeroCedula { get; set; }
+        public int IDTrabajador { get; set; }
         public string Nombre { get; set; }
         public string Apellidos { get; set; }
         public string FechaIngreso { get; set; }
@@ -22,7 +22,7 @@
         public Trabajador (int numeroCedula, string nombre, string apellidos,
             string fechaIngreso, string rol, string password, string fechaNacimiento)
         {
-            NumeroCedula = numeroCedula;
+            IDTrabajador = numeroCedula;
             Nombre = nombre;
             Apellidos = apellidos;
             FechaIngreso = fechaIngreso;

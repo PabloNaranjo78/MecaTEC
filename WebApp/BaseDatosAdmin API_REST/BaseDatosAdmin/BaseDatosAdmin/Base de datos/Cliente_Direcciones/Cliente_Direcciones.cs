@@ -10,6 +10,14 @@
     }
     public class Cliente_Direcciones
     {
+        public Cliente_Direcciones(int iDCliente, string provincia, string canton, string distrito)
+        {
+            IDCliente = iDCliente;
+            Provincia = provincia;
+            Canton = canton;
+            Distrito = distrito;
+        }
+
         public int IDCliente { get; set; }
         public string Provincia { get; set; }
         public string Canton { get; set; }

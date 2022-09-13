@@ -10,6 +10,16 @@
     }
     public class Cita
     {
+        public Cita(int placa, string fechaCita, int iDMecanico, int iDAyudante, string sucursal, int iDCliente)
+        {
+            Placa = placa;
+            FechaCita = fechaCita;
+            IDMecanico = iDMecanico;
+            IDAyudante = iDAyudante;
+            Sucursal = sucursal;
+            IDCliente = iDCliente;
+        }
+
         public int Placa { get; set; }
         public string FechaCita { get; set; }
         public int IDMecanico { get; set; }

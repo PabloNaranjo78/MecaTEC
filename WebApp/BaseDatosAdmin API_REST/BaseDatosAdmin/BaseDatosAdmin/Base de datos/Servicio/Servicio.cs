@@ -10,9 +10,17 @@
     }
     public class Servicio
     {
+        public Servicio(string nombreServ, string duracion, int precio, int costo)
+        {
+            NombreServ = nombreServ;
+            Duracion = duracion;
+            Precio = precio;
+            Costo = costo;
+        }
+
         public string NombreServ { get; set; }
         public string Duracion { get; set; }
-        public string Precio { get; set; }
-        public string Costo { get; set; }
+        public int Precio { get; set; }
+        public int Costo { get; set; }
     }
 }
