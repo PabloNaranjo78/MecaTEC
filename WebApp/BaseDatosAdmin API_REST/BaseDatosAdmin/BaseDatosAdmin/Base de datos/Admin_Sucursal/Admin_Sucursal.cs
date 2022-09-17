@@ -10,7 +10,16 @@
     }
     public class Admin_Sucursal
     {
+        public Admin_Sucursal(int idTrabajador, string sucursal, string fechaInicio)
+        {
+            IDTrabajador = idTrabajador;
+            Sucursal = sucursal;
+            FechaInicio = fechaInicio;
+        }
+
         public int IDTrabajador { get; set; }
         public string Sucursal { get; set; }
+
+        public string FechaInicio { get;set }
     }
 }

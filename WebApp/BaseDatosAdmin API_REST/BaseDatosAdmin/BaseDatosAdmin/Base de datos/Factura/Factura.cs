@@ -10,6 +10,12 @@
     }
     public class Factura
     {
+        public Factura(int placa, int numFactura)
+        {
+            Placa = placa;
+            NumFactura = numFactura;
+        }
+
         public int Placa { set; get; }
         public int NumFactura { set; get; }
 

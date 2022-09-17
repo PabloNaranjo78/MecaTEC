@@ -394,6 +394,142 @@ namespace BaseDatosAdmin.Controllers
             return BadRequest("Cliente no existe");
         }
 
+        //
+        [HttpGet]
+        [Route("servicios-cita/")]
+        public async Task<ActionResult<List<Servicios_Cita>>> GetServiciosCita([FromForm] int placa)
+        {
+
+            var servicioCitaTemp = servicios_CitaList.list.FindAll(s => s.Placa == placa);
+
+            if (servicioCitaTemp == null)
+                return NotFound("No se ha encontrado el servicio a la placa" + placa);
+            return Ok(servicioCitaTemp);
+        }
+
+        [HttpGet]
+        [Route("all-servicios-cita/")]
+        public async Task<ActionResult<List<Servicios_Cita>>> GetAllServiciosCita()
+        {
+            return Ok(servicios_CitaList.list);
+        }
+
+        [HttpPost]
+        [Route("servicios-cita/")]
+        public async Task<ActionResult<List<Servicios_Cita>>> addServiciosCita([FromForm] int placa, [FromForm] string servicio)
+        {
+
+            var verificadorPlaca = citaList.list.Find(c => c.Placa == placa);
+            var verificadorServicio = servicioList.list.Find(c => c.NombreServ == servicio);
+
+            if (verificadorPlaca != null && verificadorServicio != null)
+            {
+                var serviciosCitaTemp1 = servicios_CitaList.list.Find(c => c.Placa == placa);
+                var serviciosCitaTemp2 = servicios_CitaList.list.Find(c => c.Servicio == servicio);
+
+                if ((serviciosCitaTemp1 == null)
+               || (serviciosCitaTemp2 == null))
+                {
+                    Servicios_Cita servicios_cita = new Servicios_Cita(servicio, placa);
+                    string result = servicios_CitaList.addElementToJson(servicios_cita);
+                    return Ok(result);
+                }
+                else return BadRequest("Servicio-cita ya existente");
+            }
+            return BadRequest("No existe el servicio-cita");
+        }
+
+        //
+        [HttpGet]
+        [Route("admin-sucursal/")]
+        public async Task<ActionResult<List<Admin_Sucursal>>> GetAdminSucursal([FromForm] int idTrabajador)
+        {
+
+            var adminSucursalTemp = admin_SucursalList.list.FindAll(s => s.IDTrabajador == idTrabajador);
+
+            if (adminSucursalTemp == null)
+                return NotFound("No se ha encontrado el admin" + idTrabajador);
+            return Ok(adminSucursalTemp);
+        }
+
+        [HttpGet]
+        [Route("all-admin-sucursal/")]
+        public async Task<ActionResult<List<Admin_Sucursal>>> GetAllAdminSucursal()
+        {
+            return Ok(admin_SucursalList.list);
+        }
+
+        [HttpPost]
+        [Route("servicios-cita/")]
+        public async Task<ActionResult<List<Admin_Sucursal>>> addAdminSucursal([FromForm] int idTrabajador,
+            [FromForm] string sucursal, [FromForm] string fechaInicio)
+        {
+
+            var verificadorTrabajador = trabajadorList.list.Find(c => c.IDTrabajador == idTrabajador);
+            var verificadorSucursal = sucursalList.list.Find(c => c.NombreSuc == sucursal);
+
+            if (verificadorTrabajador != null && verificadorSucursal != null)
+            {
+                var adminSucursalTemp1 = admin_SucursalList.list.Find(c => c.IDTrabajador == idTrabajador);
+                var adminSucursalTemp2 = admin_SucursalList.list.Find(c => c.Sucursal == sucursal);
+
+                if ((adminSucursalTemp1 == null)
+               || (adminSucursalTemp1 == null))
+                {
+                    Admin_Sucursal admin_sucursal = new Admin_Sucursal(idTrabajador, sucursal,fechaInicio);
+                    string result = admin_SucursalList.addElementToJson(admin_sucursal);
+                    return Ok(result);
+                }
+                else return BadRequest("Admin-sucursal ya existente");
+            }
+            return BadRequest("No existe el Admin-sucursal");
+        }
+
+        //
+        [HttpGet]
+        [Route("factura/")]
+        public async Task<ActionResult<List<Factura>>> GetFacturas([FromForm] int placa)
+        {
+
+            var facuturaTemp = facturaList.list.FindAll(s => s.Placa == placa);
+
+            if (facuturaTemp == null)
+                return NotFound("No se han encontrado citas para la placa" + placa);
+            return Ok(facuturaTemp);
+        }
+
+        [HttpGet]
+        [Route("all-facturas/")]
+        public async Task<ActionResult<List<Admin_Sucursal>>> GetAllFacturas()
+        {
+            return Ok(facturaList.list);
+        }
+
+        [HttpPost]
+        [Route("factura/")]
+        public async Task<ActionResult<List<Factura>>> addFactura([FromForm] int placa,
+            [FromForm] int numeroFactura)
+        {
+
+            var verificadorPlaca = citaList.list.Find(c => c.Placa == placa);
+
+            if (verificadorPlaca != null)
+            {
+                var facturaTemp1 = facturaList.list.Find(c => c.Placa == placa);
+                var facturaTemp2 = facturaList.list.Find(c => c.NumFactura == numeroFactura);
+
+                if ((facturaTemp1 == null)
+               || (facturaTemp2 == null))
+                {
+                    Factura admin_sucursal = new Factura(placa, numeroFactura);
+                    string result = facturaList.addElementToJson(admin_sucursal);
+                    return Ok(result);
+                }
+                else return BadRequest("Factura ya registrada");
+            }
+            return BadRequest("No existe la placa");
+        }
+
     }
 
 
