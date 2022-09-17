@@ -17,6 +17,14 @@
     color: #FFFFFF;
     width: 50%;
     border-radius: 0PX;
+
+}
+
+
+.btn:hover{
+    background-color: #FFFFFF;
+    color: black;
+    border: 2px solid black;
 }
 
 .form-control{
@@ -26,10 +34,4 @@
 .col-4{
     background: #FFFFFF;
     box-shadow: -10px 10px 40px rgba(0, 0, 0, 0.2);
-}
-
-.btn:hover{
-    background-color: #FFFFFF;
-    color: black;
-    border: 2px solid black;
 }

@@ -1,42 +1,50 @@
 <div class="container-fluid">
-  <div class="row">
-    <div class="col">
+  <div class="row my-3">
+    
+    <div class="col-1">
     </div>
-    <div class="col-8">
-      <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon1">@</span>
-        <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+    <div class="col"> 
+      <div class="row my-3">  
+        <h2 class = "fw-bold offset-md-1">Información de Cliente</h2>
       </div>
-      
-      <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
-        <span class="input-group-text" id="basic-addon2">@example.com</span>
-      </div>
-      
-      <label for="basic-url" class="form-label">Your vanity URL</label>
-      <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon3">https://example.com/users/</span>
-        <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
-      </div>
-      
-      <div class="input-group mb-3">
-        <span class="input-group-text">$</span>
-        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-        <span class="input-group-text">.00</span>
-      </div>
-      
-      <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="Username" aria-label="Username">
-        <span class="input-group-text">@</span>
-        <input type="text" class="form-control" placeholder="Server" aria-label="Server">
-      </div>
-      
-      <div class="input-group">
-        <span class="input-group-text">With textarea</span>
-        <textarea class="form-control" aria-label="With textarea"></textarea>
-      </div>
+      <form action="#">
+          <div class="row">
+
+            <div class="col text-center">
+              <div class="row mt-4 right"><label for = "fullname" class="form-label">Nombre Completo</label></div>
+              <div class="row mt-4 right"><label for = "contact" class="form-label">Info. de Contacto</label></div>
+              <div class="row mt-4 right"><label for = "cedula" class="form-label">Cédula</label></div>
+              <div class="row mt-4 right"><label for = "usuario" class="form-label">Usuario</label></div>
+            </div>
+            <div class="col">  
+              <div class="row mt-4"><input type = "text" class="form-control" name = "fullname"></div>
+              <div class="row mt-4"><input type = "text" class="form-control" name = "contact"></div>
+              <div class="row mt-4"><input type = "number" class="form-control" name = "cedula"></div>
+              <div class="row mt-4"><input type = "text" class="form-control" name = "usuario"></div>
+            </div>
+            <div class="col-1"></div>
+            
+            <div class="col text-center">
+              <div class="row mt-4 right gy-4"><label for = "fullname" class="form-label">Correo Electrónico</label></div>
+              <div class="row mt-4 right"><label for = "contact" class="form-label">Teléfonos</label></div>
+              <div class="row mt-4 right"><label for = "cedula" class="form-label">Direcciones</label></div>
+            </div>
+            <div class="col">
+              <div class="row mt-4 gy-4"><input type = "email" placeholder="example@email.com" class="form-control" name = "password"></div>
+              <div class="row mt-4"><a class="btn btn-primary" style= "width: 100%" href="#" role="button">Añadir Teléfono</a></div>
+              <div class="row mt-4"><a class="btn btn-primary" style= "width: 100%" href="#" role="button">Añadir Dirección</a></div>
+            </div>
+
+          </div>
+          <div class="row my-5">
+            <div class="col"></div>
+            <div class="col text-center offset-md-1"> <button type="submit" class="btn btn-outline-primary"> Guardar </button> </div>
+            <div class="col text-center"> <button type="button" class="btn can btn-outline-primary"> Cancelar </button></div>
+            <div class="col"></div>
+          </div>
+        </form>
     </div>
-    <div class="col">
+    <div class="col-2">
     </div>
   </div>
 </div>

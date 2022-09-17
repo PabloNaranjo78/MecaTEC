@@ -1,21 +1,18 @@
-
-.container-fluid{
-    /*background-color: aqua;*/
-    border-radius: 0.3rem;
-    border-radius: 10px;
-    height: 80vh;
-}
-
-.text{
+.right{
     text-align: right;
-    font-size:x-large;
 }
+
+.form-label{
+    font-size:larger;
+    border-top: 2px solid #E0EAF9;
+}
+
 .btn{
     background-color: black;
     border-color: black;
     border-radius: 0px;
     color: white;
-    width: 80%;
+    width: 70%;
 }
 .btn:hover{
     background-color: white;
@@ -24,7 +21,7 @@
 }
 .can {
     background-color: white;
-    border-color: white;
+    border-color: white; 
     border-radius: 0px;
     color: black;
 }
