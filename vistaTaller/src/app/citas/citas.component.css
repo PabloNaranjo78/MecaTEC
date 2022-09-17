@@ -1,0 +1,47 @@
+
+.container-fluid{
+    /*background-color: aqua;*/
+    border-radius: 0.3rem;
+    border-radius: 10px;
+    height: 80vh;
+}
+
+.text{
+    text-align: right;
+    font-size:x-large;
+}
+.btn{
+    background-color: black;
+    border-color: black;
+    border-radius: 0px;
+    color: white;
+    width: 80%;
+}
+.btn:hover{
+    background-color: white;
+    color: black;
+    border: 2px solid white
+}
+.can {
+    background-color: white;
+    border-color: white;
+    border-radius: 0px;
+    color: black;
+}
+
+.form-control{
+    border-radius: 0px;
+    width: 80%;
+}
+
+.pos{
+    text-align: center;
+}
+
+.form-select{
+    background-color: #fff;
+    border-color: #fff;
+    border-radius: 0px;
+    color: black;
+    width: 80%;
+}
