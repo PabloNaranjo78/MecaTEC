@@ -8,6 +8,9 @@ import { CitasComponent } from './citas/citas.component';
 import { ClientesComponent } from './clientes/clientes.component';
 import { ReportesComponent } from './reportes/reportes.component';
 import { HeaderComponent } from './header/header.component';
+import { InfoClienteComponent } from './info-cliente/info-cliente.component';
+import { InfoTrabajadorComponent } from './info-trabajador/info-trabajador.component';
+import { InfoCitaComponent } from './info-cita/info-cita.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +19,10 @@ import { HeaderComponent } from './header/header.component';
     CitasComponent,
     ClientesComponent,
     ReportesComponent,
-    HeaderComponent
+    HeaderComponent,
+    InfoClienteComponent,
+    InfoTrabajadorComponent,
+    InfoCitaComponent
   ],
   imports: [
     BrowserModule,
@@ -26,6 +32,12 @@ import { HeaderComponent } from './header/header.component';
       {path:"citas", component:CitasComponent},
       {path:"clientes", component:ClientesComponent},
       {path:"reportes", component:ReportesComponent},
+      
+      {path:"reportes", component:ReportesComponent},
+      
+      {path:"cliente", component:InfoClienteComponent},
+      {path:"trabajador", component:InfoTrabajadorComponent},
+      {path:"cita", component:InfoCitaComponent},
     ])
   ],
   providers: [],

@@ -1,0 +1,44 @@
+.right{
+    text-align: right;
+}
+
+.form-label{
+    font-size:larger;
+    border-top: 2px solid #E0EAF9;
+}
+
+.btn{
+    background-color: black;
+    border-color: black;
+    border-radius: 0px;
+    color: white;
+    width: 70%;
+}
+.btn:hover{
+    background-color: white;
+    color: black;
+    border: 2px solid white
+}
+.can {
+    background-color: white;
+    border-color: white; 
+    border-radius: 0px;
+    color: black;
+}
+
+.form-control{
+    border-radius: 0px;
+    width: 80%;
+}
+
+.pos{
+    text-align: center;
+}
+
+.form-select{
+    background-color: #fff;
+    border-color: #fff;
+    border-radius: 0px;
+    color: black;
+    width: 80%;
+}
