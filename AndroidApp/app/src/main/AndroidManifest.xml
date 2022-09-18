@@ -3,18 +3,36 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="cr.ac.tec.mecatec">
 
+    <uses-permission
+        android:name="android.permission.MANAGE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MecaTEC"
         tools:targetApi="31">
         <activity
-            android:name=".customer"
+            android:name=".Menu"
+            android:exported="false" />
+        <activity
+            android:name=".Receipt"
+            android:exported="false" />
+        <activity
+            android:name=".Appointment"
+            android:exported="false" />
+        <activity
+            android:name=".Customer"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

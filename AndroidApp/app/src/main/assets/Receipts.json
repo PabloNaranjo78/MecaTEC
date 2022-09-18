@@ -1,0 +1,6 @@
+{
+  "f": [{"receipt_num": 1, "price": 3500, "detail": "New Tyres"},{"receipt_num": 2, "price": 5000, "detail": "New Engine"}],
+  "p": [{"receipt_num": 1, "price": 2500, "detail": "New Window"},{"receipt_num": 2, "price": 5000, "detail": "New Suspension"}],
+  "j": [{"receipt_num": 1, "price": 1500, "detail": "New Seats"},{"receipt_num": 2, "price": 5000, "detail": "New Mirror"}],
+  "a": [{"receipt_num": 1, "price": 7500, "detail": "New Shifter"},{"receipt_num": 2, "price": 5000, "detail": "New Love"}]
+}
