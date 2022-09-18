@@ -11,7 +11,7 @@ class Receipt : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_receipt)
 
-        val user = intent.extras?.getString("user")
+//        val user = intent.extras?.getString("user")
     }
 
 

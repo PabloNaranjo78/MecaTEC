@@ -64,8 +64,8 @@ class Customer : AppCompatActivity() {
 
 
 
-//        val aux = File("Test.txt").readText(Charsets.UTF_8)
-//        println(aux)
+        val aux = File("Test.txt").readText(Charsets.UTF_8)
+        println(aux )
 
 
 
