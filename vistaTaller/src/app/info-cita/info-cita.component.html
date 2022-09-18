@@ -20,7 +20,7 @@
                 </div>
                 <div class="col">
                     <div class="row mt-4">
-                        <select class="form-select" name = "fullname" aria-label="Default select example">
+                        <select class="form-select" name = "fullname" [(ngModel)] = "cliente" aria-label="Default select example">
                         <option selected>Seleccione un cliente</option>
                         <option value="1">One</option>
                         <option value="2">Two</option>
@@ -28,7 +28,7 @@
                       </select></div>
 
                       <div class="row mt-4">
-                        <select class="form-select" name = "sucursal" aria-label="Default select example">
+                        <select class="form-select" name = "sucursal" [(ngModel)] = "sucursal" aria-label="Default select example">
                         <option selected>Seleccione una sucursal</option>
                         <option value="1">One</option>
                         <option value="2">Two</option>
@@ -36,15 +36,15 @@
                       </select></div>
 
                       <div class="row mt-4">
-                        <select class="form-select" name = "servicio" aria-label="Default select example">
+                        <select class="form-select" name = "servicio" [(ngModel)] = "servicio" aria-label="Default select example">
                         <option selected>Seleccione un servicio</option>
                         <option value="1">One</option>
                         <option value="2">Two</option>
                         <option value="3">Three</option>
                       </select></div>
 
-                      <div class="row mt-4"><input type = "text" class="form-control" name = "placa"></div>
-                      <div class="row mt-4"><input type = "date" class="form-control" name = "fecha"></div>
+                      <div class="row mt-4"><input type = "text" class="form-control" name = "placa" [(ngModel)] = "placa"></div>
+                      <div class="row mt-4"><input type = "date" class="form-control" name = "fecha" [(ngModel)] = "fecha"></div>
                 </div>
             </div>
             <div class="row my-5">
