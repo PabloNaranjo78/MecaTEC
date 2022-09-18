@@ -1,1 +1,23 @@
 <div class="row mt-4"><a class="btn btn-primary" style= "width: 100%" href="/cliente" role="button">Añadir Cliente</a></div>
+<div class="row">
+  <div class="col-1"> </div>
+  <div class="col">
+      <div *ngFor="let n of number; let i=index">
+          <div *ngIf="crearFila(i)">
+              <div class="row mt-4">
+                  <ng-template ngFor let-c [ngForOf] = "subLista(i)">
+                      <div class="col">
+                          <div class="container gy-1" *ngIf="esValido(c)">
+                              Cliente
+                              <h2>{{c}}</h2>
+                              <button type="submit" class="btn btn-outline-primary"> EDITAR </button>
+                          </div>
+                      </div>
+                  </ng-template>
+              </div>
+          </div>
+      </div>
+
+  </div>
+  <div class="col-1"> </div>
+</div>
