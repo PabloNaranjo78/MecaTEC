@@ -36,7 +36,7 @@ namespace BaseDatosAdmin.Controllers
 
         [HttpGet]
         [Route("trabajador/")]
-        public async Task<ActionResult<List<Trabajador>>> Get([FromForm] int cedula)
+        public async Task<ActionResult<List<Trabajador>>> Get(int cedula)
         {
 
             var trabajadortemp = trabajadorList.list.Find(t => t.IDTrabajador == cedula);
@@ -56,9 +56,9 @@ namespace BaseDatosAdmin.Controllers
 
         [HttpPost]
         [Route("trabajador/")]
-        public async Task<ActionResult<List<Trabajador>>> AddTrabajador([FromForm] int idTrabajador, [FromForm] string nombre, [FromForm] string apellidos,
-            [FromForm] string fechaIngreso, [FromForm] string rol, [FromForm] string password,
-            [FromForm] string fechaNacimiento)
+        public async Task<ActionResult<List<Trabajador>>> AddTrabajador(int idTrabajador, string nombre, string apellidos,
+              string fechaIngreso, string rol, string password,
+              string fechaNacimiento)
         {
 
             SHA256 sha256Hash = SHA256.Create();
@@ -93,7 +93,7 @@ namespace BaseDatosAdmin.Controllers
 
         [HttpGet]
         [Route("sucursal/")]
-        public async Task<ActionResult<List<Sucursal>>> Get([FromForm] string nombreSuc)
+        public async Task<ActionResult<List<Sucursal>>> Get(string nombreSuc)
         {
 
             var nombreSuctemp = sucursalList.list.Find(t => t.NombreSuc == nombreSuc);
@@ -105,8 +105,8 @@ namespace BaseDatosAdmin.Controllers
 
         [HttpPost]
         [Route("sucursal/")]
-        public async Task<ActionResult<List<Sucursal>>> AddSucursal([FromForm] string nombreSuc, [FromForm] string fechaApert, [FromForm] int telefono,
-            [FromForm] string provincia, [FromForm] string canton, [FromForm] string distrito)
+        public async Task<ActionResult<List<Sucursal>>> AddSucursal(string nombreSuc, string fechaApert, int telefono,
+              string provincia, string canton, string distrito)
         {
 
             var sucursaltemp = sucursalList.list.Find(t => t.NombreSuc == nombreSuc);
@@ -121,7 +121,7 @@ namespace BaseDatosAdmin.Controllers
         }
         [HttpGet]
         [Route("servicio/")]
-        public async Task<ActionResult<List<Servicio>>> GetServicio([FromForm] string servicio)
+        public async Task<ActionResult<List<Servicio>>> GetServicio(string servicio)
         {
 
             var servicioTep = servicioList.list.Find(t => t.NombreServ == servicio);
@@ -139,8 +139,8 @@ namespace BaseDatosAdmin.Controllers
         }
         [HttpPost]
         [Route("servicio/")]
-        public async Task<ActionResult<List<Servicio>>> addServicio([FromForm] string nombreSer, [FromForm] string duracion,
-            [FromForm] int precio, [FromForm] int costo)
+        public async Task<ActionResult<List<Servicio>>> addServicio(string nombreSer, string duracion,
+              int precio, int costo)
         {
             var servicioTemp = servicioList.list.Find(s => s.NombreServ == nombreSer);
 
@@ -157,7 +157,7 @@ namespace BaseDatosAdmin.Controllers
 
         [HttpGet]
         [Route("cliente/")]
-        public async Task<ActionResult<List<Cliente>>> GetCliete([FromForm] int idCliente)
+        public async Task<ActionResult<List<Cliente>>> GetCliete(int idCliente)
         {
 
             var clienteTemp = clienteList.list.Find(c => c.IDCliente == idCliente);
@@ -175,9 +175,9 @@ namespace BaseDatosAdmin.Controllers
         }
         [HttpPost]
         [Route("cliente/")]
-        public async Task<ActionResult<List<Cliente>>> addCliente([FromForm] int idCliente,
-            [FromForm] string usuario, [FromForm] string contraseña, [FromForm] string infoContacto,
-            [FromForm] string nombre, [FromForm] string email)
+        public async Task<ActionResult<List<Cliente>>> addCliente(int idCliente,
+              string usuario, string contraseña, string infoContacto,
+              string nombre, string email)
         {
             //Hay que validar el email
             var clienteTemp = clienteList.list.Find(c => c.IDCliente == idCliente);
@@ -205,7 +205,7 @@ namespace BaseDatosAdmin.Controllers
         //
         [HttpGet]
         [Route("cita/")]
-        public async Task<ActionResult<List<Cita>>> GetCita([FromForm] int placa)
+        public async Task<ActionResult<List<Cita>>> GetCita(int placa)
         {
 
             var citaTemp = citaList.list.Find(c => c.Placa == placa);
@@ -223,8 +223,8 @@ namespace BaseDatosAdmin.Controllers
         }
         [HttpPost]
         [Route("cita/")]
-        public async Task<ActionResult<List<Cliente>>> addCita([FromForm] int placa, [FromForm] string fechaCita,
-            [FromForm] int idMecanico, [FromForm] int idAyudante, [FromForm] string sucursal, [FromForm] int idCliente)
+        public async Task<ActionResult<List<Cliente>>> addCita(int placa, string fechaCita,
+              int idMecanico, int idAyudante, string sucursal, int idCliente)
         {
             var citaTemp = citaList.list.Find(c => c.Placa == placa);
             //Agregar fecha como key
@@ -264,7 +264,7 @@ namespace BaseDatosAdmin.Controllers
         //
         [HttpGet]
         [Route("cliente-direcciones/")]
-        public async Task<ActionResult<List<Cliente_Direcciones>>> GetClienteDirecciones([FromForm] int idCliente)
+        public async Task<ActionResult<List<Cliente_Direcciones>>> GetClienteDirecciones(int idCliente)
         {
 
             var clienteDireccionesTemp = cliente_DireccionesList.list.FindAll(c => c.IDCliente == idCliente);
@@ -282,10 +282,10 @@ namespace BaseDatosAdmin.Controllers
         }
         [HttpPost]
         [Route("cliente-direcciones/")]
-        public async Task<ActionResult<List<Cliente_Direcciones>>> addClienteDirecciones([FromForm] int idCliente,
-            [FromForm] string provincia, [FromForm] string canton, [FromForm] string distrito)
+        public async Task<ActionResult<List<Cliente_Direcciones>>> addClienteDirecciones(int idCliente,
+              string provincia, string canton, string distrito)
         {
-            
+
             var verificadorCliente = clienteList.list.Find(c => c.IDCliente == idCliente);
 
             if (verificadorCliente != null)
@@ -311,7 +311,7 @@ namespace BaseDatosAdmin.Controllers
         //
         [HttpGet]
         [Route("cliente-telefonos/")]
-        public async Task<ActionResult<List<Cliente_Telefonos>>> GetClienteTelefonos([FromForm] int idCliente)
+        public async Task<ActionResult<List<Cliente_Telefonos>>> GetClienteTelefonos(int idCliente)
         {
 
             var clienteTelefonosTemp = cliente_TelefonosList.list.FindAll(c => c.IDCliente == idCliente);
@@ -329,9 +329,9 @@ namespace BaseDatosAdmin.Controllers
         }
         [HttpPost]
         [Route("cliente-telefonos/")]
-        public async Task<ActionResult<List<Cliente_Telefonos>>> addClienteTelefonos([FromForm] int idCliente, [FromForm] int telefono)
+        public async Task<ActionResult<List<Cliente_Telefonos>>> addClienteTelefonos(int idCliente, int telefono)
         {
-            
+
             var verificadorCliente = clienteList.list.Find(c => c.IDCliente == idCliente);
 
             if (verificadorCliente != null)
@@ -353,7 +353,7 @@ namespace BaseDatosAdmin.Controllers
         //
         [HttpGet]
         [Route("servicios-sucursal/")]
-        public async Task<ActionResult<List<Servicios_Sucursal>>> GetServiciosSucursal([FromForm] string servicio)
+        public async Task<ActionResult<List<Servicios_Sucursal>>> GetServiciosSucursal(string servicio)
         {
 
             var servicioSucursalTemp = servicios_SucursalList.list.FindAll(c => c.Servicio == servicio);
@@ -371,7 +371,7 @@ namespace BaseDatosAdmin.Controllers
         }
         [HttpPost]
         [Route("servicios-sucursal/")]
-        public async Task<ActionResult<List<Servicios_Sucursal>>> addServiciosSucursa([FromForm] string servicio, [FromForm] string sucursal)
+        public async Task<ActionResult<List<Servicios_Sucursal>>> addServiciosSucursa(string servicio, string sucursal)
         {
 
             var verificadorServicio = servicioList.list.Find(c => c.NombreServ == servicio);
@@ -397,7 +397,7 @@ namespace BaseDatosAdmin.Controllers
         //
         [HttpGet]
         [Route("servicios-cita/")]
-        public async Task<ActionResult<List<Servicios_Cita>>> GetServiciosCita([FromForm] int placa)
+        public async Task<ActionResult<List<Servicios_Cita>>> GetServiciosCita(int placa)
         {
 
             var servicioCitaTemp = servicios_CitaList.list.FindAll(s => s.Placa == placa);
@@ -416,7 +416,7 @@ namespace BaseDatosAdmin.Controllers
 
         [HttpPost]
         [Route("servicios-cita/")]
-        public async Task<ActionResult<List<Servicios_Cita>>> addServiciosCita([FromForm] int placa, [FromForm] string servicio)
+        public async Task<ActionResult<List<Servicios_Cita>>> addServiciosCita(int placa, string servicio)
         {
 
             var verificadorPlaca = citaList.list.Find(c => c.Placa == placa);
@@ -442,7 +442,7 @@ namespace BaseDatosAdmin.Controllers
         //
         [HttpGet]
         [Route("admin-sucursal/")]
-        public async Task<ActionResult<List<Admin_Sucursal>>> GetAdminSucursal([FromForm] int idTrabajador)
+        public async Task<ActionResult<List<Admin_Sucursal>>> GetAdminSucursal(int idTrabajador)
         {
 
             var adminSucursalTemp = admin_SucursalList.list.FindAll(s => s.IDTrabajador == idTrabajador);
@@ -461,8 +461,8 @@ namespace BaseDatosAdmin.Controllers
 
         [HttpPost]
         [Route("servicios-cita/")]
-        public async Task<ActionResult<List<Admin_Sucursal>>> addAdminSucursal([FromForm] int idTrabajador,
-            [FromForm] string sucursal, [FromForm] string fechaInicio)
+        public async Task<ActionResult<List<Admin_Sucursal>>> addAdminSucursal(int idTrabajador,
+              string sucursal, string fechaInicio)
         {
 
             var verificadorTrabajador = trabajadorList.list.Find(c => c.IDTrabajador == idTrabajador);
@@ -476,7 +476,7 @@ namespace BaseDatosAdmin.Controllers
                 if ((adminSucursalTemp1 == null)
                || (adminSucursalTemp1 == null))
                 {
-                    Admin_Sucursal admin_sucursal = new Admin_Sucursal(idTrabajador, sucursal,fechaInicio);
+                    Admin_Sucursal admin_sucursal = new Admin_Sucursal(idTrabajador, sucursal, fechaInicio);
                     string result = admin_SucursalList.addElementToJson(admin_sucursal);
                     return Ok(result);
                 }
@@ -488,7 +488,7 @@ namespace BaseDatosAdmin.Controllers
         //
         [HttpGet]
         [Route("factura/")]
-        public async Task<ActionResult<List<Factura>>> GetFacturas([FromForm] int placa)
+        public async Task<ActionResult<List<Factura>>> GetFacturas(int placa)
         {
 
             var facuturaTemp = facturaList.list.FindAll(s => s.Placa == placa);
@@ -507,8 +507,8 @@ namespace BaseDatosAdmin.Controllers
 
         [HttpPost]
         [Route("factura/")]
-        public async Task<ActionResult<List<Factura>>> addFactura([FromForm] int placa,
-            [FromForm] int numeroFactura)
+        public async Task<ActionResult<List<Factura>>> addFactura(int placa,
+              int numeroFactura)
         {
 
             var verificadorPlaca = citaList.list.Find(c => c.Placa == placa);
