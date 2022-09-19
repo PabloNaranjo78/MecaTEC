@@ -1,4 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { CitasService } from '../services/citas.service';
+import { HttpClient } from '@angular/common/http';
+import { Citas } from '../interfaces/citas';
 
 @Component({
   selector: 'app-citas',
@@ -6,11 +9,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./citas.component.css']
 })
 export class CitasComponent implements OnInit {
-  @Input() nombreLista: String;
-  @Input() apellidoLista: String;
-
-  listaCitas: Array<{nombre:String, apellido:String}>;
-
+  listaCitas:Citas[];
   crearFila(valor:number){
     if (valor%5==0){
       return true;
@@ -23,7 +22,15 @@ export class CitasComponent implements OnInit {
     if(valor+5 > this.listaCitas.length){
       sub = this.listaCitas.slice(valor)
       while(sub.length!= 5){
-        sub.push({nombre: "", apellido:""});
+        sub.push({
+          idTrabajador:0,
+          nombre:"",
+          apellidos:"",
+          fechaIngreso:"",
+          rol:"",
+          password:"",
+          fechaNacimiento:""
+      });
       }
     } else {
       sub = this.listaCitas.slice(valor, valor+5);
@@ -39,17 +46,18 @@ export class CitasComponent implements OnInit {
   }
 
   registrarUsuario(){
-    this.listaCitas.push({nombre: this.nombreLista, apellido:this.apellidoLista})
+    
   }
 
-  constructor() { 
-    this.listaCitas=[
-      {nombre:"123", apellido:"AVD"},
-      {nombre:"ASD", apellido:"412"},
-      {nombre:"121", apellido:"893"},
-      {nombre:"MCP", apellido:"062"},
-      {nombre:"PJM", apellido:"233"},
-    ]
+  
+  RUTA_API = "https://127.0.0.1:5001/api/BaseDatosAdmin";  
+  
+  constructor(private citasServicesssssssss:CitasService, private httpClient:HttpClient ) {
+    httpClient.get<Citas[]>(this.RUTA_API +'/all-trabajador').subscribe((data) =>{
+      this.listaCitas = data,
+      console.log(this.listaCitas)
+      console.log(this.listaCitas.length)
+    })
   }
 
   ngOnInit(): void {

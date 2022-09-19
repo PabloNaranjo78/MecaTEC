@@ -8,7 +8,7 @@ namespace BaseDatosAdmin.Base_de_datos
     {
         private string jsonFileName { get; set; }
 
-        private string path = @"../../BaseDatosAdmin/BaseDatosAdmin/Base de datos/";
+        private string path = @"C:/Users/maxta/GitHub/MecaTEC/WebApp/BaseDatosAdmin API_REST/BaseDatosAdmin/BaseDatosAdmin/Base de datos/";
 
         private StreamReader? reader;
 
@@ -26,6 +26,9 @@ namespace BaseDatosAdmin.Base_de_datos
         }
         public string getJsonString()
         {
+            Console.WriteLine(this.path);
+            Console.WriteLine(this.jsonFileName);
+
             reader = new StreamReader(this.path + this.jsonFileName);
             string jsonString = reader.ReadToEnd();
             reader.Close();
