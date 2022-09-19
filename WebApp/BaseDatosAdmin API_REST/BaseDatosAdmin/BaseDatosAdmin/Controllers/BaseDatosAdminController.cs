@@ -460,7 +460,7 @@ namespace BaseDatosAdmin.Controllers
         }
 
         [HttpPost]
-        [Route("servicios-cita/")]
+        [Route("admin-sucursal/")]
         public async Task<ActionResult<List<Admin_Sucursal>>> addAdminSucursal(int idTrabajador,
               string sucursal, string fechaInicio)
         {

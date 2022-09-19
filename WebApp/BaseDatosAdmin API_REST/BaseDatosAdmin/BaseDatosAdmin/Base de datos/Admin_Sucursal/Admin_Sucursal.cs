@@ -20,6 +20,6 @@
         public int IDTrabajador { get; set; }
         public string Sucursal { get; set; }
 
-        public string FechaInicio { get;set }
+        public string FechaInicio { get; set; }
     }
 }
