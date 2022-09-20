@@ -2,9 +2,7 @@ package cr.ac.tec.mecatec
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import org.json.JSONObject
-import java.io.IOException
 
 class Receipt : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,13 +25,11 @@ class Receipt : AppCompatActivity() {
         return false
     }
 
-
     fun getReceipts(name:String){
 
-        val aux = JSONObject(FileManager.getReceipts()).getJSONArray(name)
-
-        for (i in 0..aux.length()){
-            println(aux.getJSONObject(i).getString("detail"))
+        val receiptList = JSONObject(FileManager.getReceipts()).getJSONArray(name)
+        for (i in 0..(receiptList.length()-1)){
+            println(receiptList.getJSONObject(i).getString("detail"))
 
 
         }
