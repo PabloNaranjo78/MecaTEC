@@ -39,7 +39,7 @@ namespace BaseDatosAdmin.Controllers
         public async Task<ActionResult<List<Trabajador>>> Get(int cedula)
         {
 
-            var trabajadortemp = trabajadorList.list.Find(t => t.IDTrabajador == cedula);
+            var trabajadortemp = trabajadorList.list.Find(t => t.idTrabajador == cedula);
 
             if (trabajadortemp == null)
                 return NotFound("No se ha encontrado el trabajador " + cedula);
@@ -56,14 +56,12 @@ namespace BaseDatosAdmin.Controllers
 
         [HttpPost]
         [Route("trabajador/")]
-        public async Task<ActionResult<List<Trabajador>>> AddTrabajador(int idTrabajador, string nombre, string apellidos,
-              string fechaIngreso, string rol, string password,
-              string fechaNacimiento)
+        public async Task<ActionResult<TrabajadorInterface>> AddTrabajador(TrabajadorInterface trabajadorInterface)
         {
 
             SHA256 sha256Hash = SHA256.Create();
 
-            byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(password));
+            byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(trabajadorInterface.password));
             StringBuilder stringbuilder = new StringBuilder();
             for (int i = 0; i < bytes.Length; i++)
             {
@@ -72,10 +70,12 @@ namespace BaseDatosAdmin.Controllers
             string hashPassword = stringbuilder.ToString();
 
 
-            var trabajadortemp = trabajadorList.list.Find(t => t.IDTrabajador == idTrabajador);
+            var trabajadortemp = trabajadorList.list.Find(t => t.idTrabajador == trabajadorInterface.idTrabajador);
             if (trabajadortemp == null)
             {
-                Trabajador trabajador = new Trabajador(idTrabajador, nombre, apellidos, fechaIngreso, rol, hashPassword, fechaNacimiento);
+                Trabajador trabajador = new Trabajador(trabajadorInterface.idTrabajador, trabajadorInterface.nombre,
+                    trabajadorInterface.apellidos,
+                    trabajadorInterface.fechaIngreso, trabajadorInterface.rol, hashPassword, trabajadorInterface.fechaNacimiento);
                 string result = trabajadorList.addElementToJson(trabajador);
                 return Ok(result);
             }
@@ -455,7 +455,7 @@ namespace BaseDatosAdmin.Controllers
               string sucursal, string fechaInicio)
         {
 
-            var verificadorTrabajador = trabajadorList.list.Find(c => c.IDTrabajador == idTrabajador);
+            var verificadorTrabajador = trabajadorList.list.Find(c => c.idTrabajador == idTrabajador);
             var verificadorSucursal = sucursalList.list.Find(c => c.NombreSuc == sucursal);
 
             if (verificadorTrabajador != null && verificadorSucursal != null)

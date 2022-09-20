@@ -11,24 +11,24 @@
 
     public class Trabajador
     {
-        public int IDTrabajador { get; set; }
-        public string Nombre { get; set; }
-        public string Apellidos { get; set; }
-        public string FechaIngreso { get; set; }
-        public string Rol { get; set; }
-        public string Password { get; set; }
-        public string FechaNacimiento { get; set; }
+        public int idTrabajador { get; set; }
+        public string nombre { get; set; }
+        public string apellidos { get; set; }
+        public string fechaIngreso { get; set; }
+        public string rol { get; set; }
+        public string password { get; set; }
+        public string fechaNacimiento { get; set; }
 
-        public Trabajador (int numeroCedula, string nombre, string apellidos,
-            string fechaIngreso, string rol, string password, string fechaNacimiento)
+        public Trabajador (int _numeroCedula, string _nombre, string _apellidos,
+            string _fechaIngreso, string _rol, string _password, string _fechaNacimiento)
         {
-            IDTrabajador = numeroCedula;
-            Nombre = nombre;
-            Apellidos = apellidos;
-            FechaIngreso = fechaIngreso;
-            Rol = rol;
-            Password = password;
-            FechaNacimiento = fechaNacimiento;
+            idTrabajador = _numeroCedula;
+            nombre = _nombre;
+            apellidos = _apellidos;
+            fechaIngreso = _fechaIngreso;
+            rol = _rol;
+            password = _password;
+            fechaNacimiento = _fechaNacimiento;
         }
 
        
