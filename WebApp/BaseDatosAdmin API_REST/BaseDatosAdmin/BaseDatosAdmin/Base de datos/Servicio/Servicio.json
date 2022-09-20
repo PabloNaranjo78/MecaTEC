@@ -1,1 +1,56 @@
-[{"NombreServ":"11111","Duracion":"1111","Precio":0,"Costo":0},{"NombreServ":"cambio","Duracion":"1111","Precio":123123,"Costo":123123},{"NombreServ":"cambio2","Duracion":"1111","Precio":123123,"Costo":123123}]
+[
+  {
+    "NombreServ": "Cambio de aceite",
+    "Duracion": "1",
+    "Precio": 40000,
+    "Costo": 20000
+  },
+  {
+    "NombreServ": "Alineado",
+    "Duracion": "5",
+    "Precio": 20000,
+    "Costo": 12000
+  },
+  {
+    "NombreServ": "Tramado",
+    "Duracion": "3",
+    "Precio": 15000,
+    "Costo": 7000
+  },
+  {
+    "NombreServ": "Revision 5km",
+    "Duracion": "4",
+    "Precio": 20000,
+    "Costo": 10000
+  },
+  {
+    "NombreServ": "Revision 10km",
+    "Duracion": "3",
+    "Precio": 30000,
+    "Costo": 10000
+  },
+  {
+    "NombreServ": "Revision 20km",
+    "Duracion": "3",
+    "Precio": 35000,
+    "Costo": 10000
+  },
+  {
+    "NombreServ": "Reparacion caja manual",
+    "Duracion": "6",
+    "Precio": 250000,
+    "Costo": 100000
+  },
+  {
+    "NombreServ": "Reparacion caja automática",
+    "Duracion": "8",
+    "Precio": 300000,
+    "Costo": 150000
+  },
+  {
+    "NombreServ": "Overhoul",
+    "Duracion": "3",
+    "Precio": 100000,
+    "Costo": 50000
+  }
+]
