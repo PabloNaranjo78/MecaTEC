@@ -48,12 +48,10 @@ class Customer : AppCompatActivity() {
 
     }
     fun changePassword(name:String, password:String){
-        val data = JSONObject(loadData("Users.json"))
+        val data = JSONObject(FileManager.getUsers())
         val userData = data.getJSONObject(name)
-        println(userData.getString("pass"))
         userData.put("pass",password)
         data.put(name, userData)
-
 
 
         FileManager.setUsers(data.toString())
@@ -63,7 +61,7 @@ class Customer : AppCompatActivity() {
 
         val alertDialogBuilder = AlertDialog.Builder(this)
         alertDialogBuilder.setTitle("Warming")
-        alertDialogBuilder.setMessage("Your password have been changed, check your email for more information")
+        alertDialogBuilder.setMessage("Your password have been changed")
         alertDialogBuilder.setPositiveButton("OK",null)
         alertDialogBuilder.show()
 

@@ -1,11 +1,13 @@
 package cr.ac.tec.mecatec
 
+import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.*
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AlertDialog
 import org.json.JSONObject
 import java.time.LocalDateTime
 import java.time.Year
@@ -73,8 +75,20 @@ class Appointment : AppCompatActivity() {
                 myAppointments.put(newData)
                 data.put(user,myAppointments)
                 FileManager.setAppointments(data.toString())
+            }else{
+                val alertDialogBuilder = AlertDialog.Builder(this)
+                alertDialogBuilder.setTitle("Warming ")
+                alertDialogBuilder.setMessage("Please check your license plate or the appointment date.")
+                alertDialogBuilder.setPositiveButton("OK",null)
+                alertDialogBuilder.show()
             }
 
+        }
+
+        cancelButton.setOnClickListener {
+            val intent = Intent(this, Menu::class.java)
+            intent.putExtra("user",user)
+            startActivity(intent)
         }
 
     }
