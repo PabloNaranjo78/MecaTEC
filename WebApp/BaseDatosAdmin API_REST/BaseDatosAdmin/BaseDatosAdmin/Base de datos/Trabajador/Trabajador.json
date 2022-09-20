@@ -1,1 +1,74 @@
-[{"IDTrabajador":301000200,"Nombre":"Pablo","Apellidos":"Naranjo","FechaIngreso":"7/7/99","Rol":"Mecanico Ingeniero","Password":"8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92","FechaNacimiento":"9/9/70"},{"IDTrabajador":3030303,"Nombre":"Fernando","Apellidos":"Naranjo","FechaIngreso":"7/7/99","Rol":"Mecanico Ingeniere","Password":"8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92","FechaNacimiento":"9/9/70"},{"IDTrabajador":0,"Nombre":"Andy","Apellidos":"ramirez","FechaIngreso":"30/03/2012","Rol":"Director","Password":"2413fb3709b05939f04cf2e92f7d0897fc2596f9ad0b8a9ea855c7bfebaae892","FechaNacimiento":"29/03/1999"},{"IDTrabajador":3,"Nombre":"Andy11","Apellidos":"ramirez111","FechaIngreso":"30/03/2013","Rol":"Director11","Password":"45a185dc940d1dfa05f7fa66d6b65640670b4aa9becb0226b64ffe519aac6f64","FechaNacimiento":"29/03/1998"},{"IDTrabajador":4,"Nombre":"Andy11","Apellidos":"ramirez111","FechaIngreso":"30/03/2013","Rol":"Director11","Password":"45a185dc940d1dfa05f7fa66d6b65640670b4aa9becb0226b64ffe519aac6f64","FechaNacimiento":"29/03/1998"},{"IDTrabajador":6,"Nombre":"Andy11","Apellidos":"ramirez111","FechaIngreso":"30/03/2013","Rol":"Director11","Password":"45a185dc940d1dfa05f7fa66d6b65640670b4aa9becb0226b64ffe519aac6f64","FechaNacimiento":"29/03/1998"},{"IDTrabajador":8,"Nombre":"Andy11","Apellidos":"ramirez111","FechaIngreso":"30/03/2013","Rol":"Director11","Password":"45a185dc940d1dfa05f7fa66d6b65640670b4aa9becb0226b64ffe519aac6f64","FechaNacimiento":"29/03/1998"},{"IDTrabajador":10,"Nombre":"Andy11","Apellidos":"ramirez111","FechaIngreso":"30/03/2013","Rol":"Director11","Password":"45a185dc940d1dfa05f7fa66d6b65640670b4aa9becb0226b64ffe519aac6f64","FechaNacimiento":"29/03/1998"}]
+[
+  {
+    "IDTrabajador": 301000200,
+    "Nombre": "Pablo",
+    "Apellidos": "Naranjo",
+    "FechaIngreso": "7/7/99",
+    "Rol": "Mecanico Ingeniero",
+    "Password": "8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92",
+    "FechaNacimiento": "9/9/70"
+  },
+  {
+    "IDTrabajador": 3030303,
+    "Nombre": "Fernando",
+    "Apellidos": "Naranjo",
+    "FechaIngreso": "7/7/99",
+    "Rol": "Mecanico Ingeniere",
+    "Password": "8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92",
+    "FechaNacimiento": "9/9/70"
+  },
+  {
+    "IDTrabajador": 0,
+    "Nombre": "Andy",
+    "Apellidos": "ramirez",
+    "FechaIngreso": "30/03/2012",
+    "Rol": "Director",
+    "Password": "2413fb3709b05939f04cf2e92f7d0897fc2596f9ad0b8a9ea855c7bfebaae892",
+    "FechaNacimiento": "29/03/1999"
+  },
+  {
+    "IDTrabajador": 3,
+    "Nombre": "Andy11",
+    "Apellidos": "ramirez111",
+    "FechaIngreso": "30/03/2013",
+    "Rol": "Director11",
+    "Password": "45a185dc940d1dfa05f7fa66d6b65640670b4aa9becb0226b64ffe519aac6f64",
+    "FechaNacimiento": "29/03/1998"
+  },
+  {
+    "IDTrabajador": 4,
+    "Nombre": "Andy11",
+    "Apellidos": "ramirez111",
+    "FechaIngreso": "30/03/2013",
+    "Rol": "Director11",
+    "Password": "45a185dc940d1dfa05f7fa66d6b65640670b4aa9becb0226b64ffe519aac6f64",
+    "FechaNacimiento": "29/03/1998"
+  },
+  {
+    "IDTrabajador": 6,
+    "Nombre": "Andy11",
+    "Apellidos": "ramirez111",
+    "FechaIngreso": "30/03/2013",
+    "Rol": "Director11",
+    "Password": "45a185dc940d1dfa05f7fa66d6b65640670b4aa9becb0226b64ffe519aac6f64",
+    "FechaNacimiento": "29/03/1998"
+  },
+  {
+    "IDTrabajador": 8,
+    "Nombre": "Andy11",
+    "Apellidos": "ramirez111",
+    "FechaIngreso": "30/03/2013",
+    "Rol": "Director11",
+    "Password": "45a185dc940d1dfa05f7fa66d6b65640670b4aa9becb0226b64ffe519aac6f64",
+    "FechaNacimiento": "29/03/1998"
+  },
+  {
+    "IDTrabajador": 10,
+    "Nombre": "Andy11",
+    "Apellidos": "ramirez111",
+    "FechaIngreso": "30/03/2013",
+    "Rol": "Director11",
+    "Password": "45a185dc940d1dfa05f7fa66d6b65640670b4aa9becb0226b64ffe519aac6f64",
+    "FechaNacimiento": "29/03/1998"
+  }
+]

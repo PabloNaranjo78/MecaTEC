@@ -7,11 +7,11 @@
       <div *ngFor="let n of listaClientes; let i=index">
           <div *ngIf="crearFila(i)">
               <div class="row mt-4">
-                  <ng-template ngFor let-c [ngForOf] = "subLista(i)">
+                  <ng-template ngFor let-cliente [ngForOf] = "subLista(i)">
                       <div class="col">
-                          <div class="container gy-1" *ngIf="esValido(c)">
+                          <div class="container gy-1" *ngIf="esValido(cliente)">
                               Cliente
-                              <div class="row mt-1"><h2>{{c.fullName}}</h2></div>
+                              <div class="row mt-1"><h2>{{cliente.nombre}}</h2></div>
                               <button type="submit" class="btn btn-outline-primary"> EDITAR </button>
                           </div>
                       </div>

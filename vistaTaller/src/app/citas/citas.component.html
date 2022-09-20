@@ -7,11 +7,12 @@
         <div *ngFor="let n of listaCitas; let i=index">
             <div *ngIf="crearFila(i)">
                 <div class="row mt-4">
-                    <ng-template ngFor let-c [ngForOf] = "subLista(i)">
+                    <ng-template ngFor let-cita [ngForOf] = "subLista(i)">
                         <div class="col">
-                            <div class="container gy-1" *ngIf="esValido(c)">
+                            <div class="container gy-1" *ngIf="esValido(cita)">
                                 Cita
-                                <div class="row mt-2"><h2>{{c.nombre}} {{c.apellidos}}</h2></div>
+                                <div class="row mt-2"><h2>{{cita.Placa}}</h2></div>
+                                <div class="row mt-2"><p> {{cita.FechaCita}}</p></div>
                                 <a class="btn btn-primary" href="/cita" role="button">EDITAR</a>
                             </div>
                         </div>

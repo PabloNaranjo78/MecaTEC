@@ -1,4 +1,4 @@
-export interface Citas {
+export interface Trabajador {
     idTrabajador?:number,
     nombre:string;
     apellidos:string;

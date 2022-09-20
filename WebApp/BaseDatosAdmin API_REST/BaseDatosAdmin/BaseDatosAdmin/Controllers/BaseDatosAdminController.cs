@@ -223,39 +223,30 @@ namespace BaseDatosAdmin.Controllers
         }
         [HttpPost]
         [Route("cita/")]
-        public async Task<ActionResult<List<Cliente>>> addCita(int placa, string fechaCita,
-              int idMecanico, int idAyudante, string sucursal, int idCliente)
+        public async Task<ActionResult<List<Cliente>>> addCita(Cita cita)
         {
-            var citaTemp = citaList.list.Find(c => c.Placa == placa);
+            var citaTemp = citaList.list.Find(c => c.Placa == cita.Placa);
             //Agregar fecha como key
 
             if (citaTemp == null)
             {
-                var verificadorMecanico = trabajadorList.list.Find(t => t.IDTrabajador == idMecanico);
-                var verificadorAyudante = trabajadorList.list.Find(t => t.IDTrabajador == idAyudante);
-                var verificadorSucursal = sucursalList.list.Find(s => s.NombreSuc == sucursal);
-                var verificadorCliente = clienteList.list.Find(s => s.IDCliente == idCliente);
+                var verificadorSucursal = sucursalList.list.Find(s => s.NombreSuc == cita.Sucursal);
+                var verificadorCliente = clienteList.list.Find(s => s.IDCliente == cita.IDCliente);
 
-                if (verificadorMecanico != null)
-                {
                     if (verificadorCliente != null)
                     {
-                        if (verificadorAyudante != null)
-                        {
+                    
+                    
                             if (verificadorSucursal != null)
                             {
-                                Cita cita = new Cita(placa, fechaCita, idMecanico, idAyudante, sucursal, idCliente);
+                                Cita cita = new Cita(cita.Placa, cita.FechaCita, 1, 1, cita.Sucursal, cita.IDCliente);
                                 string result = citaList.addElementToJson(cita);
                                 return Ok(result);
                             }
                             else return BadRequest("No existe la sucursal");
-                        }
-                        else return BadRequest("No existe el trabajador ayudante");
+                        
                     }
                     else return BadRequest("No existe el cliente");
-
-                }
-                else return BadRequest("Mecanico no existe");
 
             }
             return BadRequest("La cita ya existe");

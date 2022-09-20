@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ClienteService } from '../services/cliente.service';
+import { Cliente } from '../interfaces/cliente';
 
 @Component({
   selector: 'app-clientes',
@@ -6,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./clientes.component.css']
 })
 export class ClientesComponent implements OnInit {
-  listaClientes: Array<{fullName:String, infoContacto:String, cedula:number, usuario:String, email:String}>;
+  listaClientes: Cliente[];
 
   crearFila(valor:number){
     if (valor%5==0){
@@ -20,7 +22,14 @@ export class ClientesComponent implements OnInit {
     if(valor+5 > this.listaClientes.length){
       sub = this.listaClientes.slice(valor)
       while(sub.length!= 5){
-        sub.push({fullName:"", infoContacto:"", cedula:0, usuario:"", email:""});
+        sub.push({
+          idCliente:0,
+          usuario:"",
+          constraseña:"",
+          infoContacto:"",
+          nombre:"",
+          email:""
+      });
       }
     } else {
       sub = this.listaClientes.slice(valor, valor+5);
@@ -29,19 +38,16 @@ export class ClientesComponent implements OnInit {
   }
 
   esValido(object:any){
-    if (object.fullName==""){
+    if (object.nombre==""){
       return false;
     }
     return true;
   }
 
-  constructor() {
-    this.listaClientes=[
-      {fullName:"Andy Ramírez", infoContacto:"Secretario", cedula:63070773, usuario:"andyrrr", email:"andy@gmail.com"},
-      {fullName:"Pablo Naranjo", infoContacto:"Director", cedula:67869345, usuario:"pablonjo", email:"naranjopablo@gmail.com"},
-      {fullName:"Fernando Monge", infoContacto:"Pariente", cedula:89764675, usuario:"fndox", email:"fernan48@gmail.com"},
-      {fullName:"Joel Zúniga", infoContacto:"Pariente", cedula:89687382, usuario:"joe67", email:"zngjoel@gmail.com"}
-    ]
+  constructor(clienteService:ClienteService) {
+    clienteService.getAllClientes().subscribe((data) =>{
+      this.listaClientes = data
+    })
    }
 
   ngOnInit(): void {
