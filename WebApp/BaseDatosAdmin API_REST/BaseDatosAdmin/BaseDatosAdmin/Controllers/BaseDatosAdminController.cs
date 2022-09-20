@@ -334,7 +334,7 @@ namespace BaseDatosAdmin.Controllers
                || (clielteTelefonosTemp2 == null))
                 {
                     Cliente_Telefonos cliente_Telefonos = new Cliente_Telefonos(ctInterface.idCliente, ctInterface.telefono);
-                    string result = cliente_TelefonosList.addElementToJson(cliente_Telefonos
+                    string result = cliente_TelefonosList.addElementToJson(cliente_Telefonos);
                     var clienteTelefonosTemp = cliente_TelefonosList.list.FindAll(c => c.idCliente == ctInterface.idCliente);
                     return Ok(clienteTelefonosTemp);
                 }
