@@ -192,7 +192,7 @@ namespace BaseDatosAdmin.Controllers
 
             if (clienteTemp == null)
             {
-                    Cliente cliente = new Cliente(client.idCliente, client.usuario,hashPassword, client.infoContacto,
+                    Cliente cliente = new (client.idCliente, client.usuario,hashPassword, client.infoContacto,
                       client.nombre, client.email);
                      string result = clienteList.addElementToJson(cliente);
                      return Ok(result);

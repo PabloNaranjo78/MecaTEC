@@ -8,7 +8,7 @@ import { Cliente} from '../interfaces/cliente';
   providedIn: 'root'
 })
 export class ClienteService {
-  RUTA_API = "https://127.0.0.1:5001/api/BaseDatosAdmin"
+  RUTA_API = "https://127.0.0.1:7170/api/BaseDatosAdmin"
   listaClientes:Cliente[];
   constructor(private httpClient:HttpClient) {
    }

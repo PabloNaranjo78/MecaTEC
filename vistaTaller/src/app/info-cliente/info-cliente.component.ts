@@ -12,7 +12,7 @@ export class InfoClienteComponent implements OnInit {
   cliente:Cliente={
     idCliente:0,
     usuario:"",
-    constraseña:"1234",
+    contraseña:"1234",
     infoContacto:"",
     nombre:"",
     email:""

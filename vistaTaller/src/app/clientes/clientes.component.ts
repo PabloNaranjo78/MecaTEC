@@ -25,7 +25,7 @@ export class ClientesComponent implements OnInit {
         sub.push({
           idCliente:0,
           usuario:"",
-          constraseña:"",
+          contraseña:"",
           infoContacto:"",
           nombre:"",
           email:""
