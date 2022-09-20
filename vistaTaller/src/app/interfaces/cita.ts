@@ -1,10 +1,10 @@
 export interface Cita {
-    Placa:number,
-    FechaCita:string,
-    IDMecanico:number,
-    IDAyudante:number,
-    Sucursal:string,
-    IDCliente:number
+    placa:number,
+    fechaCita:string,
+    idMecanico:number,
+    idAyudante:number,
+    sucursal:string,
+    idCliente:number
 }
 
 export interface Sucursal{
@@ -21,4 +21,11 @@ export interface Servicio{
     duracion:string,
     precio:number,
     costo:number
+}
+
+export interface ServicioRequest{
+    NombreServ:string,
+    Duracion:string,
+    Precio:number,
+    Costo:number
 }

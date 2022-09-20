@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Cita, Servicio, Sucursal} from '../interfaces/cita';
+import { Cita, Servicio, ServicioRequest, Sucursal} from '../interfaces/cita';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -22,10 +22,10 @@ export class CitaService {
     return this.httpClient.get<Servicio[]>(this.RUTA_API +'/all-servicio');
   }
   getCita(cita:Cita){
-    return this.httpClient.get<Servicio[]>(this.RUTA_API +'/cita?placa='+cita.Placa);
+    return this.httpClient.get<Servicio[]>(this.RUTA_API +'/cita?placa='+cita.placa);
   }
   
-  save(cita:Cita): Observable<Cita>{
+  guardarCita(cita:Cita): Observable<Cita>{
     return this.httpClient.post<Cita>(this.RUTA_API+'/cita',cita);
   }
 }

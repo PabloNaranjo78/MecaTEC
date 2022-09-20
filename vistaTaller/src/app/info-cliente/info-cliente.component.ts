@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Cliente } from '../interfaces/cliente';
+import { ClienteService } from '../services/cliente.service';
 
 @Component({
   selector: 'app-info-cliente',
@@ -6,10 +9,29 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./info-cliente.component.css']
 })
 export class InfoClienteComponent implements OnInit {
+  cliente:Cliente={
+    idCliente:0,
+    usuario:"",
+    constraseña:"1234",
+    infoContacto:"",
+    nombre:"",
+    email:""
+  }
 
-  constructor() { }
+  listaClientes:Cliente[];
+
+  constructor(private clienteService:ClienteService, private route:Router) { 
+    
+    clienteService.getAllClientes().subscribe((data) =>{
+      this.listaClientes = data
+    })
+  }
 
   ngOnInit(): void {
+  }
+
+  onSubmit(): void{
+    this.clienteService.guardarCliente(this.cliente).subscribe(res => {alert("Success")})
   }
 
 }

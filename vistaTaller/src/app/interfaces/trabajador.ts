@@ -1,5 +1,5 @@
 export interface Trabajador {
-    idTrabajador?:number,
+    idTrabajador:number,
     nombre:string;
     apellidos:string;
     fechaIngreso:string;

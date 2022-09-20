@@ -20,7 +20,7 @@
                 </div>
                 <div class="col">
                     <div class="row mt-4">
-                        <select class="form-select" name = "fullname" [(ngModel)] = "cita.IDCliente" aria-label="Default select example">
+                        <select class="form-select" name = "fullname" [(ngModel)] = "cita.idCliente" aria-label="Default select example">
                           <option selected>Seleccione un cliente</option>
                         <ng-template ngFor let-cliente [ngForOf] = "listaClientes"; let-i="index">
                           <option [value] ="cliente.idCliente">{{cliente.nombre}} ({{cliente.idCliente}})</option>
@@ -28,7 +28,7 @@
                       </select></div>
 
                       <div class="row mt-4">
-                        <select class="form-select" name = "sucursal" [(ngModel)] = "cita.Sucursal" aria-label="Default select example">
+                        <select class="form-select" name = "sucursal" [(ngModel)] = "cita.sucursal" aria-label="Default select example">
                         <option selected>Seleccione una sucursal</option>
                         <ng-template ngFor let-sucursal [ngForOf] = "listaSucursales"; let-i="index">
                           <option [value] ="sucursal.nombreSuc">{{sucursal.nombreSuc}}</option>
@@ -42,8 +42,8 @@
                           </ng-template>
                       </select></div>
 
-                      <div class="row mt-4"><input type = "text" class="form-control" name = "placa" [(ngModel)] = "cita.Placa"></div>
-                      <div class="row mt-4"><input type = "date" class="form-control" name = "fecha" [(ngModel)] = "cita.FechaCita"></div>
+                      <div class="row mt-4"><input type = "text" class="form-control" name = "placa" [(ngModel)] = "cita.placa"></div>
+                      <div class="row mt-4"><input type = "date" class="form-control" name = "fecha" [(ngModel)] = "cita.fechaCita"></div>
                 </div>
             </div>
             <div class="row my-5">

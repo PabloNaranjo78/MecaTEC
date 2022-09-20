@@ -12,12 +12,12 @@ import { ClienteService } from '../services/cliente.service';
 })
 export class InfoCitaComponent implements OnInit {
   cita:Cita={
-    Placa:0,
-    FechaCita:"",
-    IDMecanico:1,
-    IDAyudante:1,
-    Sucursal:"",
-    IDCliente:0
+    placa:0,
+    fechaCita:"",
+    idMecanico:1,
+    idAyudante:1,
+    sucursal:"",
+    idCliente:0
   }
   listaClientes:Cliente[]
   listaServicios:Servicio[]
@@ -43,7 +43,7 @@ export class InfoCitaComponent implements OnInit {
   
 
   onSubmit(): void{
-    this.citasService.save(this.cita).subscribe(res => {alert("Success")})
+    this.citasService.guardarCita(this.cita).subscribe(res => {alert("Success")})
   }
 
 }

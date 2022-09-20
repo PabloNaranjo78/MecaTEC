@@ -7,7 +7,7 @@
         <div class="row my-3">  
           <h2 class = "fw-bold offset-md-1">Información de Cliente</h2>
         </div>
-        <form action="#">
+        <form #form="ngForm" (ngSubmit)="onSubmit()">
             <div class="row">
   
               <div class="col text-center">
@@ -17,10 +17,10 @@
                 <div class="row mt-4 right"><label for = "usuario" class="form-label">Usuario</label></div>
               </div>
               <div class="col">  
-                <div class="row mt-4"><input type = "text" class="form-control" name = "fullname"></div>
-                <div class="row mt-4"><input type = "text" class="form-control" name = "contact"></div>
-                <div class="row mt-4"><input type = "number" class="form-control" name = "cedula"></div>
-                <div class="row mt-4"><input type = "text" class="form-control" name = "usuario"></div>
+                <div class="row mt-4"><input type = "text" class="form-control" name = "fullname" [(ngModel)] = "cliente.nombre"></div>
+                <div class="row mt-4"><input type = "text" class="form-control" name = "contact" [(ngModel)] = "cliente.infoContacto"></div>
+                <div class="row mt-4"><input type = "number" class="form-control" name = "cedula" [(ngModel)] = "cliente.idCliente"></div>
+                <div class="row mt-4"><input type = "text" class="form-control" name = "usuario" [(ngModel)] = "cliente.usuario"></div>
               </div>
               <div class="col-1"></div>
               
@@ -30,7 +30,7 @@
                 <div class="row mt-4 right"><label for = "cedula" class="form-label">Direcciones</label></div>
               </div>
               <div class="col">
-                <div class="row mt-4 gy-4"><input type = "email" placeholder="example@email.com" class="form-control" name = "password"></div>
+                <div class="row mt-4 gy-4"><input type = "email" placeholder="example@email.com" class="form-control" name = "email" [(ngModel)] = "cliente.email"></div>
                 <div class="row mt-4"><a class="btn btn-primary" style= "width: 100%" href="#" role="button">Añadir Teléfono</a></div>
                 <div class="row mt-4"><a class="btn btn-primary" style= "width: 100%" href="#" role="button">Añadir Dirección</a></div>
               </div>

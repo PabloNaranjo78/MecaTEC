@@ -21,12 +21,12 @@ export class CitasComponent implements OnInit {
     if(valor+5 > this.listaCitas.length){
       sub = this.listaCitas.slice(valor)
       while(sub.length!= 5){
-        sub.push({Placa:0,
-          FechaCita:"",
-          IDMecanico:0,
-          IDAyudante:0,
-          Sucursal:"",
-          IDCliente:0
+        sub.push({placa:0,
+          fechaCita:"",
+          idMecanico:0,
+          idAyudante:0,
+          sucursal:"",
+          idCliente:0
       });
       }
     } else {

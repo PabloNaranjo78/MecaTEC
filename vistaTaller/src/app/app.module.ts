@@ -9,6 +9,7 @@ import { CitasComponent } from './citas/citas.component';
 import { ClientesComponent } from './clientes/clientes.component';
 import { ReportesComponent } from './reportes/reportes.component';
 import { HeaderComponent } from './header/header.component';
+import { TrabajadoresComponent } from './trabajadores/trabajadores.component';
 import { InfoClienteComponent } from './info-cliente/info-cliente.component';
 import { InfoTrabajadorComponent } from './info-trabajador/info-trabajador.component';
 import { InfoCitaComponent } from './info-cita/info-cita.component';
@@ -23,6 +24,7 @@ import { FormsModule } from '@angular/forms';
     ClientesComponent,
     ReportesComponent,
     HeaderComponent,
+    TrabajadoresComponent,
     InfoClienteComponent,
     InfoTrabajadorComponent,
     InfoCitaComponent,
@@ -36,8 +38,7 @@ import { FormsModule } from '@angular/forms';
       {path:"citas", component:CitasComponent},
       {path:"clientes", component:ClientesComponent},
       {path:"reportes", component:ReportesComponent},
-      
-      {path:"reportes", component:ReportesComponent},
+      {path:"trabajadores", component:TrabajadoresComponent},
       
       {path:"cliente", component:InfoClienteComponent},
       {path:"trabajador", component:InfoTrabajadorComponent},
