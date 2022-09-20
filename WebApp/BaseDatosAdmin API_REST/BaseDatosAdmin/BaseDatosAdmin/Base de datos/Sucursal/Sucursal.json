@@ -1,1 +1,34 @@
-[{"NombreSuc":"Loma","FechaApert":"9/9/80","Telefono":12345678,"Provincia":"Cartago","Canton":"Cartago","Distrito":"Oriente"}]
+[
+  {
+    "NombreSuc": "Loma",
+    "FechaApert": "9/9/80",
+    "Telefono": 25502020,
+    "Provincia": "Cartago",
+    "Canton": "Cartago",
+    "Distrito": "Oriente"
+  },
+  {
+    "NombreSuc": "AutoArreglos",
+    "FechaApert": "7/10/1980",
+    "Telefono": 84128532,
+    "Provincia": "Cartago",
+    "Canton": "Oreamuno",
+    "Distrito": "Santa Rosa"
+  },
+  {
+    "NombreSuc": "Taller Pinares",
+    "FechaApert": "5/11/1996",
+    "Telefono": 40401212,
+    "Provincia": "San José",
+    "Canton": "Sanchez",
+    "Distrito": "Pinares"
+  },
+  {
+    "NombreSuc": "Taller Anita",
+    "FechaApert": "9/6/1990",
+    "Telefono": 27433939,
+    "Provincia": "San José",
+    "Canton": "Santa Ana",
+    "Distrito": "Santa Ana"
+  }
+]
