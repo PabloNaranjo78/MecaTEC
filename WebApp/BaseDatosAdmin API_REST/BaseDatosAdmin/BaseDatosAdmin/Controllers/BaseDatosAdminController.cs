@@ -160,7 +160,7 @@ namespace BaseDatosAdmin.Controllers
         public async Task<ActionResult<List<Cliente>>> GetCliete(int idCliente)
         {
 
-            var clienteTemp = clienteList.list.Find(c => c.IDCliente == idCliente);
+            var clienteTemp = clienteList.list.Find(c => c.idCliente == idCliente);
 
             if (clienteTemp == null)
                 return NotFound("No se ha encontrado el cliente " + idCliente);
@@ -180,7 +180,7 @@ namespace BaseDatosAdmin.Controllers
               string nombre, string email)
         {
             //Hay que validar el email
-            var clienteTemp = clienteList.list.Find(c => c.IDCliente == idCliente);
+            var clienteTemp = clienteList.list.Find(c => c.idCliente == idCliente);
 
             SHA256 sha256Hash = SHA256.Create();
 
@@ -231,7 +231,7 @@ namespace BaseDatosAdmin.Controllers
             if (citaTemp == null)
             {
                 var verificadorSucursal = sucursalList.list.Find(s => s.NombreSuc == cita.sucursal);
-                var verificadorCliente = clienteList.list.Find(s => s.IDCliente == cita.idCliente);
+                var verificadorCliente = clienteList.list.Find(s => s.idCliente == cita.idCliente);
 
                     if (verificadorCliente != null)
                     {
@@ -277,7 +277,7 @@ namespace BaseDatosAdmin.Controllers
               string provincia, string canton, string distrito)
         {
 
-            var verificadorCliente = clienteList.list.Find(c => c.IDCliente == idCliente);
+            var verificadorCliente = clienteList.list.Find(c => c.idCliente == idCliente);
 
             if (verificadorCliente != null)
             {
@@ -323,7 +323,7 @@ namespace BaseDatosAdmin.Controllers
         public async Task<ActionResult<List<Cliente_Telefonos>>> addClienteTelefonos(int idCliente, int telefono)
         {
 
-            var verificadorCliente = clienteList.list.Find(c => c.IDCliente == idCliente);
+            var verificadorCliente = clienteList.list.Find(c => c.idCliente == idCliente);
 
             if (verificadorCliente != null)
             {
