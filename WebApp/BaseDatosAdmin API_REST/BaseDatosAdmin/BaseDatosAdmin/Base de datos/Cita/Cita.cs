@@ -12,19 +12,19 @@
     {
         public Cita(int placa, string fechaCita, int iDMecanico, int iDAyudante, string sucursal, int iDCliente)
         {
-            Placa = placa;
-            FechaCita = fechaCita;
-            IDMecanico = iDMecanico;
-            IDAyudante = iDAyudante;
-            Sucursal = sucursal;
-            IDCliente = iDCliente;
+            this.placa = placa;
+            this.fechaCita = fechaCita;
+            idMecanico = iDMecanico;
+            idAyudante = iDAyudante;
+            this.sucursal = sucursal;
+            idCliente = iDCliente;
         }
 
-        public int Placa { get; set; }
-        public string FechaCita { get; set; }
-        public int IDMecanico { get; set; }
-        public int IDAyudante { get; set; }
-        public string Sucursal { get; set; }
-        public int IDCliente { get; set; }
+        public int placa { get; set; }
+        public string fechaCita { get; set; }
+        public int idMecanico { get; set; }
+        public int idAyudante { get; set; }
+        public string sucursal { get; set; }
+        public int idCliente { get; set; }
     }
 }

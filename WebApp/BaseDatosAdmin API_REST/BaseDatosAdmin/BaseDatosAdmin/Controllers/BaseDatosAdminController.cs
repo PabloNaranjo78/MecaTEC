@@ -208,7 +208,7 @@ namespace BaseDatosAdmin.Controllers
         public async Task<ActionResult<List<Cita>>> GetCita(int placa)
         {
 
-            var citaTemp = citaList.list.Find(c => c.Placa == placa);
+            var citaTemp = citaList.list.Find(c => c.placa == placa);
 
             if (citaTemp == null)
                 return NotFound("No se ha encontrado la cita " + placa);
@@ -225,13 +225,13 @@ namespace BaseDatosAdmin.Controllers
         [Route("cita/")]
         public async Task<ActionResult<List<Cliente>>> addCita(Cita cita)
         {
-            var citaTemp = citaList.list.Find(c => c.Placa == cita.Placa);
+            var citaTemp = citaList.list.Find(c => c.placa == cita.placa);
             //Agregar fecha como key
 
             if (citaTemp == null)
             {
-                var verificadorSucursal = sucursalList.list.Find(s => s.NombreSuc == cita.Sucursal);
-                var verificadorCliente = clienteList.list.Find(s => s.IDCliente == cita.IDCliente);
+                var verificadorSucursal = sucursalList.list.Find(s => s.NombreSuc == cita.sucursal);
+                var verificadorCliente = clienteList.list.Find(s => s.IDCliente == cita.idCliente);
 
                     if (verificadorCliente != null)
                     {
@@ -239,7 +239,7 @@ namespace BaseDatosAdmin.Controllers
                     
                             if (verificadorSucursal != null)
                             {
-                                Cita cita = new Cita(cita.Placa, cita.FechaCita, 1, 1, cita.Sucursal, cita.IDCliente);
+                                Cita cita = new Cita(cita.placa, cita.fechaCita, 1, 1, cita.sucursal, cita.idCliente);
                                 string result = citaList.addElementToJson(cita);
                                 return Ok(result);
                             }
@@ -410,7 +410,7 @@ namespace BaseDatosAdmin.Controllers
         public async Task<ActionResult<List<Servicios_Cita>>> addServiciosCita(int placa, string servicio)
         {
 
-            var verificadorPlaca = citaList.list.Find(c => c.Placa == placa);
+            var verificadorPlaca = citaList.list.Find(c => c.placa == placa);
             var verificadorServicio = servicioList.list.Find(c => c.NombreServ == servicio);
 
             if (verificadorPlaca != null && verificadorServicio != null)
@@ -502,7 +502,7 @@ namespace BaseDatosAdmin.Controllers
               int numeroFactura)
         {
 
-            var verificadorPlaca = citaList.list.Find(c => c.Placa == placa);
+            var verificadorPlaca = citaList.list.Find(c => c.placa == placa);
 
             if (verificadorPlaca != null)
             {
