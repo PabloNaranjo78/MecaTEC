@@ -291,8 +291,8 @@ namespace BaseDatosAdmin.Controllers
                 {
                     Cliente_Direcciones cliente_Direcciones = new Cliente_Direcciones(cdInterface.idCliente, cdInterface.provincia,
                         cdInterface.canton, cdInterface.distrito);
-                    string result = cliente_DireccionesList.addElementToJson(cliente_Direcciones);
-                    return Ok(result);
+                    var clienteDireccionesTemp = cliente_DireccionesList.list.FindAll(c => c.idCliente == cdInterface.idCliente);
+                    return Ok(clienteDireccionesTemp);
                 }
                 else return BadRequest("Dirección ya registrada");
             }
@@ -333,8 +333,8 @@ namespace BaseDatosAdmin.Controllers
                || (clielteTelefonosTemp2 == null))
                 {
                     Cliente_Telefonos cliente_Telefonos = new Cliente_Telefonos(ctInterface.idCliente, ctInterface.telefono);
-                    string result = cliente_TelefonosList.addElementToJson(cliente_Telefonos);
-                    return Ok(result);
+                    var clienteTelefonosTemp = cliente_TelefonosList.list.FindAll(c => c.idCliente == ctInterface.idCliente);
+                    return Ok(clienteTelefonosTemp);
                 }
                 else return BadRequest("Telefono ya registrada");
             }
