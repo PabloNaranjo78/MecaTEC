@@ -11,29 +11,33 @@ class Receipt : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_receipt)
 
-//        val user = intent.extras?.getString("user")
+        val user = intent.extras?.getString("user")
+        if(validation(user.toString())){
+            getReceipts(user.toString())
+
+        }
     }
 
 
     fun validation(name:String): Boolean{
 //        val data = JSONObject(loadData("Receipts.json"))
-        if (JSONObject(loadData("Receipts.json")).has(name)){
+        if (JSONObject(FileManager.getReceipts()).has(name)){
             return true
         }
         return false
     }
 
-    fun loadData(inFile: String): String {
-        var tContents = ""
-        try{
-            val stream = assets.open(inFile)
-            val size = stream.available()
-            val buffer = ByteArray(size)
-            stream.read(buffer)
-            stream.close()
-            tContents =  String(buffer)
-        }catch (e: IOException){
+
+    fun getReceipts(name:String){
+
+        val aux = JSONObject(FileManager.getReceipts()).getJSONArray(name)
+
+        for (i in 0..aux.length()){
+            println(aux.getJSONObject(i).getString("detail"))
+
+
         }
-        return tContents
+
+
     }
 }

@@ -22,6 +22,8 @@ import javax.mail.internet.MimeMessage
 
 
 
+
+
 class Customer : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,25 +54,10 @@ class Customer : AppCompatActivity() {
         userData.put("pass",password)
         data.put(name, userData)
 
-//        val path = getExternalFilesDir(null)
-//
-//        println(path)
-
-//        val letDirectory = File(path,)
-//        letDirectory.mkdirs()
-//        val file = File(letDirectory, "Records.txt")
-//        file.appendText("record goes here")
 
 
-
-
-        val aux = File("Test.txt").readText(Charsets.UTF_8)
-        println(aux )
-
-
-
-
-        println(data.toString())
+        FileManager.setUsers(data.toString())
+        println(FileManager.getUsers())
 
 
 
@@ -115,6 +102,10 @@ class Customer : AppCompatActivity() {
 
 
         val session = Session.getInstance(props,)
+
+    }
+
+    fun setFileInstance(){
 
     }
 
