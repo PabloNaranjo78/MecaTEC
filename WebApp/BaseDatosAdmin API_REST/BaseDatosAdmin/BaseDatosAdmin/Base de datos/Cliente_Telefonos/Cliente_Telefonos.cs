@@ -12,12 +12,12 @@
     {
         public Cliente_Telefonos(int idCliente, int telefono)
         {
-            IDCliente = idCliente;
-            Telefono = telefono;
+            this.idCliente = idCliente;
+            this.telefono = telefono;
         }
 
-        public int IDCliente { get; set; }
-        public int Telefono { get; set; }
+        public int idCliente { get; set; }
+        public int telefono { get; set; }
   
     }
 }

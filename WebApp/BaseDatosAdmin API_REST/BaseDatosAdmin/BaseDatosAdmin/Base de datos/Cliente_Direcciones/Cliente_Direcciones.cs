@@ -12,15 +12,15 @@
     {
         public Cliente_Direcciones(int iDCliente, string provincia, string canton, string distrito)
         {
-            IDCliente = iDCliente;
-            Provincia = provincia;
-            Canton = canton;
-            Distrito = distrito;
+            this.idCliente = iDCliente;
+            this.provincia = provincia;
+            this.canton = canton;
+            this.distrito = distrito;
         }
 
-        public int IDCliente { get; set; }
-        public string Provincia { get; set; }
-        public string Canton { get; set; }
-        public string Distrito { get; set; }
+        public int idCliente { get; set; }
+        public string provincia { get; set; }
+        public string canton { get; set; }
+        public string distrito { get; set; }
     }
 }

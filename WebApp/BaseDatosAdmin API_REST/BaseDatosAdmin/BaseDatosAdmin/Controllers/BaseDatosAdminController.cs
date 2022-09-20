@@ -15,6 +15,7 @@ using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Text;
+using BaseDatosAdmin.Base_de_datos.Cliente_Direcciones;
 
 namespace BaseDatosAdmin.Controllers
 {
@@ -257,7 +258,7 @@ namespace BaseDatosAdmin.Controllers
         public async Task<ActionResult<List<Cliente_Direcciones>>> GetClienteDirecciones(int idCliente)
         {
 
-            var clienteDireccionesTemp = cliente_DireccionesList.list.FindAll(c => c.IDCliente == idCliente);
+            var clienteDireccionesTemp = cliente_DireccionesList.list.FindAll(c => c.idCliente == idCliente);
 
             if (clienteDireccionesTemp == null)
                 return NotFound("No se ha encontrado la direccion " + idCliente);
@@ -272,24 +273,24 @@ namespace BaseDatosAdmin.Controllers
         }
         [HttpPost]
         [Route("cliente-direcciones/")]
-        public async Task<ActionResult<List<Cliente_Direcciones>>> addClienteDirecciones(int idCliente,
-              string provincia, string canton, string distrito)
+        public async Task<ActionResult<ClienteDireccionesInterface>> addClienteDirecciones(ClienteDireccionesInterface cdInterface)
         {
 
-            var verificadorCliente = clienteList.list.Find(c => c.idCliente == idCliente);
+            var verificadorCliente = clienteList.list.Find(c => c.idCliente == cdInterface.idCliente);
 
             if (verificadorCliente != null)
             {
-                var clielteDireccionesTemp1 = cliente_DireccionesList.list.Find(c => c.IDCliente == idCliente);
-                var clielteDireccionesTemp2 = cliente_DireccionesList.list.Find(c => c.Provincia == provincia);
-                var clielteDireccionesTemp3 = cliente_DireccionesList.list.Find(c => c.Canton == canton);
-                var clielteDireccionesTemp4 = cliente_DireccionesList.list.Find(c => c.Distrito == distrito);
+                var clielteDireccionesTemp1 = cliente_DireccionesList.list.Find(c => c.idCliente == cdInterface.idCliente);
+                var clielteDireccionesTemp2 = cliente_DireccionesList.list.Find(c => c.provincia == cdInterface.provincia);
+                var clielteDireccionesTemp3 = cliente_DireccionesList.list.Find(c => c.canton == cdInterface.canton);
+                var clielteDireccionesTemp4 = cliente_DireccionesList.list.Find(c => c.distrito == cdInterface.distrito);
                 if ((clielteDireccionesTemp1 == null)
                || (clielteDireccionesTemp2 == null)
                || (clielteDireccionesTemp3 == null)
                || (clielteDireccionesTemp4 == null))
                 {
-                    Cliente_Direcciones cliente_Direcciones = new Cliente_Direcciones(idCliente, provincia, canton, distrito);
+                    Cliente_Direcciones cliente_Direcciones = new Cliente_Direcciones(cdInterface.idCliente, cdInterface.provincia,
+                        cdInterface.canton, cdInterface.distrito);
                     string result = cliente_DireccionesList.addElementToJson(cliente_Direcciones);
                     return Ok(result);
                 }
@@ -304,7 +305,7 @@ namespace BaseDatosAdmin.Controllers
         public async Task<ActionResult<List<Cliente_Telefonos>>> GetClienteTelefonos(int idCliente)
         {
 
-            var clienteTelefonosTemp = cliente_TelefonosList.list.FindAll(c => c.IDCliente == idCliente);
+            var clienteTelefonosTemp = cliente_TelefonosList.list.FindAll(c => c.idCliente == idCliente);
 
             if (clienteTelefonosTemp == null)
                 return NotFound("No se ha encontrado la telefono " + idCliente);
@@ -319,19 +320,19 @@ namespace BaseDatosAdmin.Controllers
         }
         [HttpPost]
         [Route("cliente-telefonos/")]
-        public async Task<ActionResult<List<Cliente_Telefonos>>> addClienteTelefonos(int idCliente, int telefono)
+        public async Task<ActionResult<ClienteTelefonosInterface>> addClienteTelefonos(ClienteTelefonosInterface ctInterface)
         {
 
-            var verificadorCliente = clienteList.list.Find(c => c.idCliente == idCliente);
+            var verificadorCliente = clienteList.list.Find(c => c.idCliente == ctInterface.idCliente);
 
             if (verificadorCliente != null)
             {
-                var clielteTelefonosTemp1 = cliente_TelefonosList.list.Find(c => c.IDCliente == idCliente);
-                var clielteTelefonosTemp2 = cliente_TelefonosList.list.Find(c => c.Telefono == telefono);
+                var clielteTelefonosTemp1 = cliente_TelefonosList.list.Find(c => c.idCliente == ctInterface.idCliente);
+                var clielteTelefonosTemp2 = cliente_TelefonosList.list.Find(c => c.telefono == ctInterface.telefono);
                 if ((clielteTelefonosTemp1 == null)
                || (clielteTelefonosTemp2 == null))
                 {
-                    Cliente_Telefonos cliente_Telefonos = new Cliente_Telefonos(idCliente, telefono);
+                    Cliente_Telefonos cliente_Telefonos = new Cliente_Telefonos(ctInterface.idCliente, ctInterface.telefono);
                     string result = cliente_TelefonosList.addElementToJson(cliente_Telefonos);
                     return Ok(result);
                 }
