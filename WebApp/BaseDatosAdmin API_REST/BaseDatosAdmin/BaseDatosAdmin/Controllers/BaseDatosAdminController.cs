@@ -175,31 +175,30 @@ namespace BaseDatosAdmin.Controllers
         }
         [HttpPost]
         [Route("cliente/")]
-        public async Task<ActionResult<List<Cliente>>> addCliente(int idCliente,
-              string usuario, string contraseña, string infoContacto,
-              string nombre, string email)
+        public async Task<ActionResult<ClienteInterface>> addCliente(ClienteInterface client)
         {
             //Hay que validar el email
-            var clienteTemp = clienteList.list.Find(c => c.idCliente == idCliente);
+            var clienteTemp = clienteList.list.Find(c => c.idCliente == client.idCliente);
 
             SHA256 sha256Hash = SHA256.Create();
-
-            byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(contraseña));
-            StringBuilder stringbuilder = new StringBuilder();
-            for (int i = 0; i < bytes.Length; i++)
-            {
-                stringbuilder.Append(bytes[i].ToString("x2"));
-            }
-            string hashPassword = stringbuilder.ToString();
+      
+           byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(client.contraseña));
+           StringBuilder stringbuilder = new StringBuilder();
+           for (int i = 0; i < bytes.Length; i++)
+           {
+               stringbuilder.Append(bytes[i].ToString("x2"));
+           }
+           string hashPassword = stringbuilder.ToString();
 
             if (clienteTemp == null)
             {
-                Cliente cliente = new Cliente(idCliente, usuario, hashPassword, infoContacto, nombre, email);
-                string result = clienteList.addElementToJson(cliente);
-                return Ok(result);
-
+                    Cliente cliente = new Cliente(client.idCliente, client.usuario,hashPassword, client.infoContacto,
+                      client.nombre, client.email);
+                     string result = clienteList.addElementToJson(cliente);
+                     return Ok(result);
+                
             }
-            return BadRequest("El cliente ya existe");
+            return BadRequest("Cliente ya existe");
         }
 
         //
@@ -223,7 +222,7 @@ namespace BaseDatosAdmin.Controllers
         }
         [HttpPost]
         [Route("cita/")]
-        public async Task<ActionResult<List<Cliente>>> addCita(Cita cita)
+        public async Task<ActionResult<List<Cita>>> addCita(Cita cita)
         {
             var citaTemp = citaList.list.Find(c => c.placa == cita.placa);
             //Agregar fecha como key
@@ -239,8 +238,8 @@ namespace BaseDatosAdmin.Controllers
                     
                             if (verificadorSucursal != null)
                             {
-                                Cita cita = new Cita(cita.placa, cita.fechaCita, 1, 1, cita.sucursal, cita.idCliente);
-                                string result = citaList.addElementToJson(cita);
+                                Cita citaa = new Cita(cita.placa, cita.fechaCita, 1, 1, cita.sucursal, cita.idCliente);
+                                string result = citaList.addElementToJson(citaa);
                                 return Ok(result);
                             }
                             else return BadRequest("No existe la sucursal");

@@ -10,14 +10,15 @@
     }
     public class Cliente
     {
-        public Cliente(int iDCliente, string usuario, string constraseña, string infoContacto, string nombre, string email)
+        public Cliente(int _iDCliente, string _usuario, string _constraseña, 
+            string _infoContacto, string _nombre, string _email)
         {
-            idCliente = iDCliente;
-            this.usuario = usuario;
-            contraseña = constraseña;
-            this.infoContacto = infoContacto;
-            this.nombre = nombre;
-            this.email = email;
+            this.idCliente = _iDCliente;
+            this.usuario = _usuario;
+            this.contraseña = _constraseña;
+            this.infoContacto = _infoContacto;
+            this.nombre = _nombre;
+            this.email = _email;
         }
 
         public int idCliente { get; set; }
