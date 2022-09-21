@@ -11,11 +11,13 @@ using BaseDatosAdmin.Base_de_datos.Servicios_Sucursal;
 using BaseDatosAdmin.Base_de_datos.Servicios_Cita;
 using BaseDatosAdmin.Base_de_datos.Admin_Sucursal;
 using BaseDatosAdmin.Base_de_datos.Factura;
+using BaseDatosAdmin.Base_de_datos.Login;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Text;
 using BaseDatosAdmin.Base_de_datos.Cliente_Direcciones;
+using System.Reflection.Metadata.Ecma335;
 
 namespace BaseDatosAdmin.Controllers
 {
@@ -521,6 +523,53 @@ namespace BaseDatosAdmin.Controllers
                 else return BadRequest("Factura ya registrada");
             }
             return BadRequest("No existe la placa");
+        }
+
+        [HttpPost]
+        [Route("login/")]
+        public async Task<ActionResult<LoginResult>> login(Login login)
+        {
+
+            var trabajadorVer = trabajadorList.list.Find(t => t.idTrabajador == login.id);
+            LoginResult loginResult;
+
+            SHA256 sha256Hash = SHA256.Create();
+
+            byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(login.password));
+            StringBuilder stringbuilder = new StringBuilder();
+            for (int i = 0; i < bytes.Length; i++)
+            {
+                stringbuilder.Append(bytes[i].ToString("x2"));
+            }
+            string hashPassword = stringbuilder.ToString();
+            
+
+            if (trabajadorVer != null) {
+                if (hashPassword == trabajadorVer.password) { 
+                    loginResult = new LoginResult { id = login.id, correctPassword = true, type = "Trabajador"}; 
+                }
+                else
+                {
+                    loginResult = new LoginResult { id = login.id, correctPassword = false, type = "Trabajador" };
+                }
+                return Ok(loginResult);
+            }
+            var clienteVer = clienteList.list.Find(c => c.idCliente == login.id);
+            if (clienteVer != null)
+            {
+                if (hashPassword == clienteVer.contraseña)
+                {
+                    loginResult = new LoginResult { id = login.id, correctPassword = true, type = "Cliente" };
+                }
+                else
+                {
+                    loginResult = new LoginResult { id = login.id, correctPassword = false, type = "Cliente" };
+                }
+                return Ok(loginResult);
+            }
+
+            return BadRequest("No existe el id");
+
         }
 
     }
