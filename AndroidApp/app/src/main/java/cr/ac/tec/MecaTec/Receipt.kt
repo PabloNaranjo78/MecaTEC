@@ -1,12 +1,15 @@
 package cr.ac.tec.mecatec
 
+import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Gravity
+import android.widget.Button
 import android.widget.TableLayout
 import android.widget.TableRow
 import android.widget.TextView
+import androidx.core.view.setPadding
 import org.json.JSONObject
 
 class Receipt : AppCompatActivity() {
@@ -14,13 +17,15 @@ class Receipt : AppCompatActivity() {
     lateinit var priceList:ArrayList<String>
     lateinit var detailList:ArrayList<String>
 
+    /**
+     * Main function
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_receipt)
 
         val table = findViewById<TableLayout>(R.id.table)
-
-
+        val backButton = findViewById<Button>(R.id.btn_back)
 
 
 
@@ -38,6 +43,14 @@ class Receipt : AppCompatActivity() {
 
         val receiptList = JSONObject(FileManager.getReceipts()).getJSONArray(user).length()
 
+        backButton.setOnClickListener {
+            val intent = Intent(this, Menu::class.java)
+            intent.putExtra("user",user)
+            startActivity(intent)
+        }
+
+        getReceipts(user.toString())
+
         for (i in -1..receiptList-1){
             row = TableRow(this)
             row.layoutParams = layoutRow
@@ -48,7 +61,7 @@ class Receipt : AppCompatActivity() {
                 tvReceipt.gravity = Gravity.CENTER
                 tvReceipt.setBackgroundColor(Color.BLACK)
                 tvReceipt.setTextColor(Color.WHITE)
-                tvReceipt.setPadding(10,10,10,10)
+                tvReceipt.setPadding(150,10,10,10)
                 tvReceipt.layoutParams = layoutReceipt
                 row.addView(tvReceipt)
 
@@ -69,7 +82,7 @@ class Receipt : AppCompatActivity() {
                 tvDetail.gravity = Gravity.CENTER
                 tvDetail.setBackgroundColor(Color.BLACK)
                 tvDetail.setTextColor(Color.WHITE)
-                tvDetail.setPadding(10,10,10,10)
+                tvDetail.setPadding(10,10,150,10)
                 tvDetail.layoutParams = layoutReceipt
                 row.addView(tvDetail)
 
@@ -78,38 +91,46 @@ class Receipt : AppCompatActivity() {
 
             }else{
                 tvReceipt = TextView(this)
-                tvReceipt.setText(receiptList.get)
+                tvReceipt.setText(FileManager.getReceiptsList(i))
+                tvReceipt.gravity = Gravity.CENTER
+                tvReceipt.setPadding(10,10,10,10)
+                tvReceipt.layoutParams = layoutReceipt
+                row.addView(tvReceipt)
+
+                tvPrice = TextView(this)
+                tvPrice.setText(FileManager.getpriceList(i))
+                tvPrice.gravity = Gravity.CENTER
+                tvPrice.setPadding(10,10,10,10)
+                tvPrice.layoutParams = layoutPrice
+                row.addView(tvPrice)
+
+                tvDetail = TextView(this)
+                tvDetail.setText(FileManager.getdetailList(i))
+                tvDetail.gravity = Gravity.CENTER
+                tvDetail.setPadding(10,10,10,10)
+                tvDetail.layoutParams = layoutDetail
+                row.addView(tvDetail)
+
+                table.addView(row)
             }
 
         }
 
-
     }
 
-
-    fun validation(name:String): Boolean{
-//        val data = JSONObject(loadData("Receipts.json"))
-        if (JSONObject(FileManager.getReceipts()).has(name)){
-            return true
-        }
-        return false
-    }
-
+    /**
+     * Gets the receipts of an user
+     */
     fun getReceipts(name:String){
 
         val receiptList = JSONObject(FileManager.getReceipts()).getJSONArray(name)
         for (i in 0..(receiptList.length()-1)){
 
-            receiptNumList.add(receiptList.getJSONObject(i).getString("detail"))
-            priceList.add(receiptList.getJSONObject(i).getString("price"))
-            detailList.add(receiptList.getJSONObject(i).getString("detail"))
-
-
-            println(receiptList.getJSONObject(i).getString("detail"))
-
+            FileManager.setReceiptsList(receiptList.getJSONObject(i).getString("receipt_num"))
+            FileManager.setpriceList(receiptList.getJSONObject(i).getString("price"))
+            FileManager.sepdetailList(receiptList.getJSONObject(i).getString("detail"))
 
         }
-
 
     }
 

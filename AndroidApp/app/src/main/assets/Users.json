@@ -1,6 +1,6 @@
 {
-  "f": {"pass": "f"},
-  "Pablo": {"pass": "2"},
-  "Joel": {"pass": "3"},
-  "Andy": {"pass": "4"}
+  "Fernando": {"pass": "1", "lastNames": "Monge Ramirez", "phone": "88885555", "id": "305360374", "email":"fernando@gmail.com", "address": "Tobosi"},
+  "Pablo": {"pass": "2", "lastNames": "Naranjo Monge", "phone": "89745236", "id":  "305400385", "email":"pablo@gmail.com", "address": "Tarrazu"},
+  "Joel": {"pass": "3", "lastNames": "Gomez Araya", "phone": "87458213", "id": "305380789", "email":"joelo@gmail.com", "address": "San Isidro"},
+  "Andy": {"pass": "4", "lastNames": "Ramirez Fonseca", "phone": "6941235", "id": "405630235", "email":"andy@gmail.com", "address": "Paraiso"}
 }
