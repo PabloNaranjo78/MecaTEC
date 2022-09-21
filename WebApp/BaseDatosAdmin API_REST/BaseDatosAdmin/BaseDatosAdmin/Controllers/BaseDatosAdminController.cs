@@ -21,6 +21,10 @@ using System.Reflection.Metadata.Ecma335;
 
 namespace BaseDatosAdmin.Controllers
 {
+
+    /// <summary>
+    /// Esta clase se encarga del manejo de los métodos que se llaman por medio del api
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class BaseDatosAdminController : ControllerBase
@@ -37,6 +41,12 @@ namespace BaseDatosAdmin.Controllers
         Admin_SucursalList admin_SucursalList = new Admin_SucursalList();
         FacturaList facturaList = new FacturaList();
 
+        /// <summary>
+        /// Método get para obtener un determinado trabajador que está en la base de datos, en caso de no existir retornará
+        /// un error 404
+        /// </summary>
+        /// <param name="cedula"> Número entero referente el número de cédula o id del trabajador a buscar </param>
+        /// <returns>En caso de encontrarse, retorna un trabajador en forma de json, en caso contrario, un error 404</returns>
         [HttpGet]
         [Route("trabajador/")]
         public async Task<ActionResult<List<Trabajador>>> Get(int cedula)
@@ -49,6 +59,10 @@ namespace BaseDatosAdmin.Controllers
             return Ok(trabajadortemp);
         }
 
+        /// <summary>
+        /// Método get para los trabajadores, retorna una lista con todos los trabajadores
+        /// </summary>
+        /// <returns>Retorna un array de json con todos los trabajdores</returns>
         [HttpGet]
         [Route("all-trabajador/")]
         public async Task<ActionResult<List<Trabajador>>> GetAllTrabajador()
@@ -57,6 +71,12 @@ namespace BaseDatosAdmin.Controllers
             return Ok(trabajadorList.list);
         }
 
+        /// <summary>
+        /// Método post para trabajadores, recibe una serie de parámetros establecidos en la clase TrabajadorInterface
+        /// </summary>
+        /// <param name="trabajadorInterface"> Un objeto con los parámetros de idTrabajador(int) nombre(string) apellidos(string)
+        /// fechaIngreso(string) rol(string) password(string) fechaNacimiento(string)</param>
+        /// <returns>Retorna una lista con todos los trabajadores que hay en la base de datos</returns>
         [HttpPost]
         [Route("trabajador/")]
         public async Task<ActionResult<TrabajadorInterface>> AddTrabajador(TrabajadorInterface trabajadorInterface)
@@ -86,6 +106,10 @@ namespace BaseDatosAdmin.Controllers
             return BadRequest("Ya existe un trabajador bajo esa cédula");
         }
 
+        /// <summary>
+        /// Retorna todas las sucursales que existen en la base de datos
+        /// </summary>
+        /// <returns>Retorna una lista con todos las sucursales</returns>
         [HttpGet]
         [Route("all-sucursal/")]
         public async Task<ActionResult<List<Sucursal>>> GetAllSucursal()
@@ -94,6 +118,11 @@ namespace BaseDatosAdmin.Controllers
             return Ok(sucursalList.list);
         }
 
+        /// <summary>
+        /// Método get que retorna una surucrsal a partir de su nombre
+        /// </summary>
+        /// <param name="nombreSuc"> string con el nombre de la sucursal</param>
+        /// <returns></returns>
         [HttpGet]
         [Route("sucursal/")]
         public async Task<ActionResult<List<Sucursal>>> Get(string nombreSuc)
@@ -106,6 +135,16 @@ namespace BaseDatosAdmin.Controllers
             return Ok(nombreSuctemp);
         }
 
+        /// <summary>
+        /// Agrega una nueva surucal por medio de un método post
+        /// </summary>
+        /// <param name="nombreSuc"> string con el nombre de la sucursal</param>
+        /// <param name="fechaApert">string con la fecha de apertura</param>
+        /// <param name="telefono">int con el telefono de la surcursal</param>
+        /// <param name="provincia">string con provincia de la sucursal</param>
+        /// <param name="canton">string con el cantón de la sucursal</param>
+        /// <param name="distrito">string del distrito de la sucursal</param>
+        /// <returns>Retorna una la lista con todos las sucursales</returns>
         [HttpPost]
         [Route("sucursal/")]
         public async Task<ActionResult<List<Sucursal>>> AddSucursal(string nombreSuc, string fechaApert, int telefono,
@@ -122,6 +161,12 @@ namespace BaseDatosAdmin.Controllers
 
             return BadRequest("Ya existe una sucursal bajo este nombre");
         }
+
+        /// <summary>
+        /// Método get para obtener un servicio
+        /// </summary>
+        /// <param name="servicio">string con el nombre del serivicio a buscar</param>
+        /// <returns>Retorna un json con el servicio encontrado, en caso contrario, un eror 404</returns>
         [HttpGet]
         [Route("servicio/")]
         public async Task<ActionResult<List<Servicio>>> GetServicio(string servicio)
@@ -134,12 +179,24 @@ namespace BaseDatosAdmin.Controllers
             return Ok(servicioTep);
         }
 
+        /// <summary>
+        /// Retorna todos los servicios que se tienen en la base de datos
+        /// </summary>
+        /// <returns>Json con los servicios</returns>
         [HttpGet]
         [Route("all-servicio/")]
         public async Task<ActionResult<List<Servicio>>> GetAllServicio()
         {
             return Ok(servicioList.list);
         }
+        /// <summary>
+        /// Método post para agregar un nuevo servicio
+        /// </summary>
+        /// <param name="nombreSer">string con el nombre del servicio</param>
+        /// <param name="duracion">int con la duracion del servicio en horas</param>
+        /// <param name="precio">int con el precio del servicio</param>
+        /// <param name="costo">int con el costo del servicio</param>
+        /// <returns>Json con todos los servicios que se tienen en la base de datos</returns>
         [HttpPost]
         [Route("servicio/")]
         public async Task<ActionResult<List<Servicio>>> addServicio(string nombreSer, string duracion,
@@ -157,7 +214,11 @@ namespace BaseDatosAdmin.Controllers
             return BadRequest("El servicio ya existe");
         }
 
-
+        /// <summary>
+        /// Método get para obtener un cliente específico
+        /// </summary>
+        /// <param name="idCliente">int con el id del cliente a buscar</param>
+        /// <returns>returna un json con los datos del cliente encontrado</returns>
         [HttpGet]
         [Route("cliente/")]
         public async Task<ActionResult<List<Cliente>>> GetCliete(int idCliente)
@@ -169,42 +230,55 @@ namespace BaseDatosAdmin.Controllers
                 return NotFound("No se ha encontrado el cliente " + idCliente);
             return Ok(clienteTemp);
         }
-
+        /// <summary>
+        /// Método get para obtener todos los clientes que se tienen en la base de datos
+        /// </summary>
+        /// <returns>json con todos los clientes de la base de datos</returns>
         [HttpGet]
         [Route("all-cliente/")]
         public async Task<ActionResult<List<Cliente>>> GetAlCliente()
         {
             return Ok(clienteList.list);
         }
+        /// <summary>
+        /// Método post para crear un cliente, este recibe los parámetros establecidos en el interface
+        /// </summary>
+        /// <param name="client">un objeto con los datos de idCliente(string) usuario(string) contraseña(string)
+        /// infoContacto(string) nombre(string) email(string)</param>
+        /// <returns>Retorna todos los clientes que existen en la base de datos</returns>
         [HttpPost]
         [Route("cliente/")]
         public async Task<ActionResult<ClienteInterface>> addCliente(ClienteInterface client)
         {
-            //Hay que validar el email
+
             var clienteTemp = clienteList.list.Find(c => c.idCliente == client.idCliente);
 
             SHA256 sha256Hash = SHA256.Create();
-      
-           byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(client.contraseña));
-           StringBuilder stringbuilder = new StringBuilder();
-           for (int i = 0; i < bytes.Length; i++)
-           {
-               stringbuilder.Append(bytes[i].ToString("x2"));
-           }
-           string hashPassword = stringbuilder.ToString();
+
+            byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(client.contraseña));
+            StringBuilder stringbuilder = new StringBuilder();
+            for (int i = 0; i < bytes.Length; i++)
+            {
+                stringbuilder.Append(bytes[i].ToString("x2"));
+            }
+            string hashPassword = stringbuilder.ToString();
 
             if (clienteTemp == null)
             {
-                    Cliente cliente = new (client.idCliente, client.usuario,hashPassword, client.infoContacto,
-                      client.nombre, client.email);
-                     string result = clienteList.addElementToJson(cliente);
-                     return Ok(result);
-                
+                Cliente cliente = new(client.idCliente, client.usuario, hashPassword, client.infoContacto,
+                  client.nombre, client.email);
+                string result = clienteList.addElementToJson(cliente);
+                return Ok(result);
+
             }
             return BadRequest("Cliente ya existe");
         }
 
-        //
+        /// <summary>
+        /// Método get para obtener una cita específica a partir de una placa
+        /// </summary>
+        /// <param name="placa">Placa de la cita a buscar (int)</param>
+        /// <returns>retorna un json con los datos de la cita, caso contrario un error 404</returns>
         [HttpGet]
         [Route("cita/")]
         public async Task<ActionResult<List<Cita>>> GetCita(int placa)
@@ -216,45 +290,58 @@ namespace BaseDatosAdmin.Controllers
                 return NotFound("No se ha encontrado la cita " + placa);
             return Ok(citaTemp);
         }
-
+        /// <summary>
+        /// Retorna todas las citas que se tienen en la base de datos
+        /// </summary>
+        /// <returns>json con los datos de todas las citas</returns>
         [HttpGet]
         [Route("all-cita/")]
         public async Task<ActionResult<List<Cita>>> GetAllCita()
         {
             return Ok(citaList.list);
         }
+
+        /// <summary>
+        /// Método post para crear una cita
+        /// </summary>
+        /// <param name="cita">un objeto con los parámetros de placa(int) fechaCita(string) idMecanico(int)
+        /// idAyudante(int) sucursal(string) idCliente(int)</param>
+        /// <returns>Retorna un json con todas las citas</returns>
         [HttpPost]
         [Route("cita/")]
         public async Task<ActionResult<List<Cita>>> addCita(Cita cita)
         {
             var citaTemp = citaList.list.Find(c => c.placa == cita.placa);
-            //Agregar fecha como key
 
             if (citaTemp == null)
             {
                 var verificadorSucursal = sucursalList.list.Find(s => s.NombreSuc == cita.sucursal);
                 var verificadorCliente = clienteList.list.Find(s => s.idCliente == cita.idCliente);
 
-                    if (verificadorCliente != null)
+                if (verificadorCliente != null)
+                {
+
+
+                    if (verificadorSucursal != null)
                     {
-                    
-                    
-                            if (verificadorSucursal != null)
-                            {
-                                Cita citaa = new Cita(cita.placa, cita.fechaCita, 1, 1, cita.sucursal, cita.idCliente);
-                                string result = citaList.addElementToJson(citaa);
-                                return Ok(result);
-                            }
-                            else return BadRequest("No existe la sucursal");
-                        
+                        Cita citaa = new Cita(cita.placa, cita.fechaCita, 1, 1, cita.sucursal, cita.idCliente);
+                        string result = citaList.addElementToJson(citaa);
+                        return Ok(result);
                     }
-                    else return BadRequest("No existe el cliente");
+                    else return BadRequest("No existe la sucursal");
+
+                }
+                else return BadRequest("No existe el cliente");
 
             }
             return BadRequest("La cita ya existe");
         }
 
-        //
+        /// <summary>
+        /// Retorna toda las direcciones que tiene un cliente
+        /// </summary>
+        /// <param name="idCliente">int con el id del cliente</param>
+        /// <returns>Retorna un json con las direcciones del cliente</returns>
         [HttpGet]
         [Route("cliente-direcciones/")]
         public async Task<ActionResult<List<Cliente_Direcciones>>> GetClienteDirecciones(int idCliente)
@@ -266,13 +353,22 @@ namespace BaseDatosAdmin.Controllers
                 return NotFound("No se ha encontrado la direccion " + idCliente);
             return Ok(clienteDireccionesTemp);
         }
-
+        /// <summary>
+        /// Método get para obtener todas las direcciones que hay en la base de datos
+        /// </summary>
+        /// <returns>Retorna un json con todas las direcciones</returns>
         [HttpGet]
         [Route("all-cliente-direcciones/")]
         public async Task<ActionResult<List<Cliente_Direcciones>>> GetAllClienteDirecciones()
         {
             return Ok(cliente_DireccionesList.list);
         }
+        /// <summary>
+        /// Método post para agregar una nueva direccion
+        /// </summary>
+        /// <param name="cdInterface">un objeto con los parámetros de idCliente(int) provincia(string)
+        /// canton(string) distrito(string)</param>
+        /// <returns>Retorna todos las direcciones del cliente al cual se agregó la direccion</returns>
         [HttpPost]
         [Route("cliente-direcciones/")]
         public async Task<ActionResult<ClienteDireccionesInterface>> addClienteDirecciones(ClienteDireccionesInterface cdInterface)
@@ -302,7 +398,11 @@ namespace BaseDatosAdmin.Controllers
             return BadRequest("Cliente no existe");
         }
 
-        //
+        /// <summary>
+        /// Retorna todos los telefonos que tiene un cliente
+        /// </summary>
+        /// <param name="idCliente">int con el id del cliente a buscar</param>
+        /// <returns></returns>
         [HttpGet]
         [Route("cliente-telefonos/")]
         public async Task<ActionResult<List<Cliente_Telefonos>>> GetClienteTelefonos(int idCliente)
@@ -315,12 +415,22 @@ namespace BaseDatosAdmin.Controllers
             return Ok(clienteTelefonosTemp);
         }
 
+        /// <summary>
+        /// Retorna todos los telefonos de todos los clientes
+        /// </summary>
+        /// <returns>Json con lost telefonos de todos los clientes</returns>
         [HttpGet]
         [Route("all-cliente-telefonos/")]
         public async Task<ActionResult<List<Cliente_Telefonos>>> GetAllClienteTelefonos()
         {
             return Ok(cliente_TelefonosList.list);
         }
+
+        /// <summary>
+        /// Método post para agregar nuevos telefonos a un cliente
+        /// </summary>
+        /// <param name="ctInterface">objeto con los datos de idCliente(int) telefono(int)</param>
+        /// <returns></returns>
         [HttpPost]
         [Route("cliente-telefonos/")]
         public async Task<ActionResult<ClienteTelefonosInterface>> addClienteTelefonos(ClienteTelefonosInterface ctInterface)
@@ -345,7 +455,11 @@ namespace BaseDatosAdmin.Controllers
             return BadRequest("Cliente no existe");
         }
 
-        //
+        /// <summary>
+        /// Método get para obtener un servicio en específico
+        /// </summary>
+        /// <param name="servicio">Nombre del servicio (string)</param>
+        /// <returns>Retorna un json con todos los datos del servicio a buscar</returns>
         [HttpGet]
         [Route("servicios-sucursal/")]
         public async Task<ActionResult<List<Servicios_Sucursal>>> GetServiciosSucursal(string servicio)
@@ -358,12 +472,22 @@ namespace BaseDatosAdmin.Controllers
             return Ok(servicioSucursalTemp);
         }
 
+        /// <summary>
+        /// Método que retorna todos los servicios de una sucursal
+        /// </summary>
+        /// <returns>Json con todos los servicios</returns>
         [HttpGet]
         [Route("all-servicios-sucursal/")]
         public async Task<ActionResult<List<Servicios_Sucursal>>> GetAllServiciosSucursa()
         {
             return Ok(servicios_SucursalList.list);
         }
+        /// <summary>
+        /// Método para agregar un nuevo servicio a una sucursal
+        /// </summary>
+        /// <param name="servicio">nombre del servicio(string)</param>
+        /// <param name="sucursal">nombre de la sucursal(string)</param>
+        /// <returns>Json con todos los servicios y sucursales</returns>
         [HttpPost]
         [Route("servicios-sucursal/")]
         public async Task<ActionResult<List<Servicios_Sucursal>>> addServiciosSucursa(string servicio, string sucursal)
@@ -389,7 +513,11 @@ namespace BaseDatosAdmin.Controllers
             return BadRequest("Cliente no existe");
         }
 
-        //
+        /// <summary>
+        /// Método get para obtener un servicio asignado a una cita
+        /// </summary>
+        /// <param name="placa">int de la placa</param>
+        /// <returns>json con la cita relacionada a un servicio</returns>
         [HttpGet]
         [Route("servicios-cita/")]
         public async Task<ActionResult<List<Servicios_Cita>>> GetServiciosCita(int placa)
@@ -401,7 +529,10 @@ namespace BaseDatosAdmin.Controllers
                 return NotFound("No se ha encontrado el servicio a la placa" + placa);
             return Ok(servicioCitaTemp);
         }
-
+        /// <summary>
+        /// Método get para obtener todos los servicios relacionados a una cita
+        /// </summary>
+        /// <returns>Json con los servicios-cita</returns>
         [HttpGet]
         [Route("all-servicios-cita/")]
         public async Task<ActionResult<List<Servicios_Cita>>> GetAllServiciosCita()
@@ -409,6 +540,12 @@ namespace BaseDatosAdmin.Controllers
             return Ok(servicios_CitaList.list);
         }
 
+        /// <summary>
+        /// Método para agregar un servicio a una cita
+        /// </summary>
+        /// <param name="placa">int de placa</param>
+        /// <param name="servicio">string de nombre del servicio</param>
+        /// <returns></returns>
         [HttpPost]
         [Route("servicios-cita/")]
         public async Task<ActionResult<List<Servicios_Cita>>> addServiciosCita(int placa, string servicio)
@@ -525,6 +662,11 @@ namespace BaseDatosAdmin.Controllers
             return BadRequest("No existe la placa");
         }
 
+        /// <summary>
+        /// Método post encargado de verificar el inicio se sesión
+        /// </summary>
+        /// <param name="login"> objeto con id(int) password(string)</param>
+        /// <returns>Retorna un json con el resultado del inicio de sesion y el tipo de usuario que es</returns>
         [HttpPost]
         [Route("login/")]
         public async Task<ActionResult<LoginResult>> login(Login login)
@@ -542,11 +684,13 @@ namespace BaseDatosAdmin.Controllers
                 stringbuilder.Append(bytes[i].ToString("x2"));
             }
             string hashPassword = stringbuilder.ToString();
-            
 
-            if (trabajadorVer != null) {
-                if (hashPassword == trabajadorVer.password) { 
-                    loginResult = new LoginResult { id = login.id, correctPassword = true, type = "Trabajador"}; 
+
+            if (trabajadorVer != null)
+            {
+                if (hashPassword == trabajadorVer.password)
+                {
+                    loginResult = new LoginResult { id = login.id, correctPassword = true, type = "Trabajador" };
                 }
                 else
                 {
