@@ -1,6 +1,7 @@
 package cr.ac.tec.mecatec
 
 import android.app.Activity
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -25,15 +26,24 @@ import javax.mail.internet.MimeMessage
 
 
 class Customer : AppCompatActivity() {
+    /**
+     * Main function
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_customer)
 
         val user = intent.extras?.getString("user")
         val saveButton = findViewById<Button>(R.id.btn_save)
+        val cancelButton =  findViewById<Button>(R.id.btn_cancelCustomer)
         val passText = findViewById<TextView>(R.id.edt_newpass)
 
         findViewById<TextView>(R.id.pt_user).setText(user)
+        findViewById<TextView>(R.id.pt_lastNameCustumer).setText(JSONObject(FileManager.getUsers()).getJSONObject(user).get("lastNames").toString())
+        findViewById<TextView>(R.id.pt_phoneCustumer).setText(JSONObject(FileManager.getUsers()).getJSONObject(user).get("phone").toString())
+        findViewById<TextView>(R.id.pt_idCustumer).setText(JSONObject(FileManager.getUsers()).getJSONObject(user).get("id").toString())
+        findViewById<TextView>(R.id.pt_emailCustumer).setText(JSONObject(FileManager.getUsers()).getJSONObject(user).get("email").toString())
+        findViewById<TextView>(R.id.pt_addressCustumer).setText(JSONObject(FileManager.getUsers()).getJSONObject(user).get("address").toString())
 
         saveButton.setOnClickListener {
             if (passText.text.toString() != ""){
@@ -45,8 +55,19 @@ class Customer : AppCompatActivity() {
 
         }
 
+        cancelButton.setOnClickListener {
+            val intent = Intent(this, Menu::class.java)
+            intent.putExtra("user",user)
+            startActivity(intent)
+        }
+
 
     }
+
+    /**@param name user name
+     * @param password new password
+     * Change the user password
+     */
     fun changePassword(name:String, password:String){
         val data = JSONObject(FileManager.getUsers())
         val userData = data.getJSONObject(name)
@@ -57,58 +78,13 @@ class Customer : AppCompatActivity() {
         FileManager.setUsers(data.toString())
         println(FileManager.getUsers())
 
-
-
         val alertDialogBuilder = AlertDialog.Builder(this)
         alertDialogBuilder.setTitle("Warming")
         alertDialogBuilder.setMessage("Your password have been changed")
         alertDialogBuilder.setPositiveButton("OK",null)
         alertDialogBuilder.show()
 
-
     }
 
-
-    fun loadData(inFile: String): String {
-        var tContents = ""
-        try{
-            val stream = assets.open(inFile)
-            val size = stream.available()
-            val buffer = ByteArray(size)
-            stream.read(buffer)
-            stream.close()
-            tContents =  String(buffer)
-
-
-        }catch (e: IOException){
-        }
-        return tContents
-    }
-
-    fun sendPassword(address: String, info: String){
-        val mail = "mecatec.info@gmail.com"
-        val pass = "Mecatec123"
-        val props = Properties()
-
-        props.put("mail.smtp.auth","true")
-        props.put("mail.smtp.starttls.enable","true")
-        props.put("mail.smtp.host","smtp.gmail.com")
-        props.put("mail.smtp.port","587")
-
-        val aux =  PasswordAuthentication(mail, pass)
-
-
-
-        val session = Session.getInstance(props,)
-
-    }
-
-    fun setFileInstance(){
-
-    }
-
-//    class derived : PasswordAuthentication() {
-//        override fun PasswordAuthentication
-//    }
 
 }

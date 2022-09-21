@@ -64,7 +64,6 @@ class Appointment : AppCompatActivity() {
 
         saveButton.setOnClickListener {
             if (licensePlate.text.toString() != "" && checkDate(picker.dayOfMonth,(picker.month+1),picker.year)){
-                println("AXXXXXXXXXXXX")
                 val data = JSONObject(FileManager.getAppointments())
                 val myAppointments = data.getJSONArray(user)
                 val newData = JSONObject("{\"licensePlate\": \"${licensePlate.text}\"," +
@@ -75,6 +74,14 @@ class Appointment : AppCompatActivity() {
                 myAppointments.put(newData)
                 data.put(user,myAppointments)
                 FileManager.setAppointments(data.toString())
+
+                val alertDialogBuilder = AlertDialog.Builder(this)
+                alertDialogBuilder.setTitle("Warming")
+                alertDialogBuilder.setMessage("You have registered a new appointment.")
+                alertDialogBuilder.setPositiveButton("OK",null)
+                alertDialogBuilder.show()
+
+
             }else{
                 val alertDialogBuilder = AlertDialog.Builder(this)
                 alertDialogBuilder.setTitle("Warming ")
@@ -92,10 +99,20 @@ class Appointment : AppCompatActivity() {
         }
 
     }
+
+    /**
+     * Marges the date
+     *@param day selected
+     * @param month selected
+     * @param year selected
+     */
     fun getDate(day:String, month:String, year: String): String{
         return "$day/$month/$year"
     }
 
+    /**
+     * Checks is the date is valid
+     */
     @RequiresApi(Build.VERSION_CODES.O)
     fun checkDate(day: Int, month: Int, year: Int): Boolean{
         val today = LocalDateTime.now()
