@@ -46,13 +46,11 @@ export class InfoClienteComponent implements OnInit {
   onTelefonos():void{
     this.clienteService.getTelefonos(this.cliente.idCliente).subscribe((data) =>{
       this.listaTelefonos = data;
-      console.log(this.listaTelefonos);
     })
   }
   onDirecciones():void{
     this.clienteService.getDirecciones(this.cliente.idCliente).subscribe((data) =>{
       this.listaDirecciones = data;
-      console.log(this.listaDirecciones);
     })
   }
 

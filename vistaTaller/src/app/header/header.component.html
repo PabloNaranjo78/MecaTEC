@@ -1,13 +1,11 @@
 <div class="container-fluid">
     <div class="row">
       <div class="col">
-        <img src="./assets/img/Not Original.png" height = 100px alt="Responsive image">
+        <img src="./assets/img/LogoGrande.png" height = 100px alt="Responsive image">
       </div>
       <div class="col-6">
+        <div class="container gy-1" *ngIf="esTrabajador()">
         <ul class="nav nav-fill">
-            <li class="nav-item">
-              <a class = "tab" routerLink="/login" routerLinkActive="tab-active">Login</a>
-            </li>
             <li class="nav-item">
               <a class = "tab"  routerLink="/clientes" routerLinkActive="tab-active">Clientes</a>
             </li>
@@ -21,6 +19,21 @@
               <a class = "tab" routerLink="/trabajadores" routerLinkActive="tab-active">Trabajadores</a>
             </li>
           </ul>
+        </div>
+        <div class="container gy-1" *ngIf="esCliente()">
+          <ul class="nav nav-fill">
+              <li class="nav-item">
+                <a class = "tab"  routerLink="/cliente" routerLinkActive="tab-active">Perfil</a>
+              </li>
+              <li class="nav-item">
+                <a class = "tab" routerLink="/cita" routerLinkActive="tab-active">Citas</a>
+              </li>
+              <li class="nav-item">
+                <a class = "tab" routerLink="/reportes" routerLinkActive="tab-active">Facturas</a>
+              </li>
+            </ul>
+          </div>
+
       </div>
       <div class="col my-4">
         <button type="button" class="btn btn-outline-primary"> Salir </button>

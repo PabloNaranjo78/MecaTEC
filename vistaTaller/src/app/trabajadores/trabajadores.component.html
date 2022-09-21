@@ -1,3 +1,4 @@
+<app-header></app-header>
 <div class="row">
     <div class="col-1"> </div>
     <div class="col">
@@ -13,7 +14,7 @@
                                 Cliente
                                 <div class="row mt-1"><h2>{{trabajador.nombre}}</h2></div>
                                 <div class="row mt-2"><p> {{trabajador.idTrabajador}}</p></div>
-                                <button type="submit" class="btn btn-outline-primary"> EDITAR </button>
+                                <button [routerLink]="['/trabajador',trabajador.idTrabajador]" type="submit" class="btn btn-outline-primary"> EDITAR </button>
                             </div>
                         </div>
                     </ng-template>
