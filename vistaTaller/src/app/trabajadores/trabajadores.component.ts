@@ -47,7 +47,6 @@ export class TrabajadoresComponent implements OnInit {
   constructor(trabajadorService:TrabajadorService) {
     trabajadorService.getAllTrabajadores().subscribe((data) =>{
     this.listaTrabajadores = data;
-    console.log(this.listaTrabajadores);
   });
    }
 

@@ -15,6 +15,7 @@ import { InfoTrabajadorComponent } from './info-trabajador/info-trabajador.compo
 import { InfoCitaComponent } from './info-cita/info-cita.component';
 import { CitaComponent } from './cita/cita.component';
 import { FormsModule } from '@angular/forms';
+import { VistaTallerComponent } from './vista-taller/vista-taller.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { FormsModule } from '@angular/forms';
     InfoClienteComponent,
     InfoTrabajadorComponent,
     InfoCitaComponent,
-    CitaComponent
+    CitaComponent,
+    VistaTallerComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +45,9 @@ import { FormsModule } from '@angular/forms';
       {path:"cliente", component:InfoClienteComponent},
       {path:"trabajador", component:InfoTrabajadorComponent},
       {path:"cita", component:InfoCitaComponent},
-      {path: "prov", component:CitaComponent}
+      {path: "prov", component:CitaComponent},
+
+      {path:"vistaTaller", component:VistaTallerComponent}
     ]),
     FormsModule,
     HttpClientModule
