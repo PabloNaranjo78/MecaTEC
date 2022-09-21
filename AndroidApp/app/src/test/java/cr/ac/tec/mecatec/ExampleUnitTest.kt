@@ -1,4 +1,4 @@
-package cr.ac.tec.mecatecandroidapp
+package cr.ac.tec.mecatec
 
 import org.junit.Test
 
