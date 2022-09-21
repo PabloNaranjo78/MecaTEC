@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Cliente } from '../interfaces/cliente';
+import { Cliente, Telefono, Direccion } from '../interfaces/cliente';
 import { ClienteService } from '../services/cliente.service';
+// ES6 Modules or TypeScript
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-info-cliente',
@@ -17,11 +19,22 @@ export class InfoClienteComponent implements OnInit {
     nombre:"",
     email:""
   }
+  telefonoNuevo:Telefono={
+    idCliente:0,
+    telefono:0
+  }
+  direccionNueva:Direccion={
+    idCliente:0,
+    provincia:"",
+    canton:"",
+    distrito:""
+  }
 
   listaClientes:Cliente[];
+  listaTelefonos:Telefono[];
+  listaDirecciones:Direccion[];
 
-  constructor(private clienteService:ClienteService, private route:Router) { 
-    
+  constructor(private clienteService:ClienteService, private route:Router) {
     clienteService.getAllClientes().subscribe((data) =>{
       this.listaClientes = data
     })
@@ -30,8 +43,62 @@ export class InfoClienteComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onTelefonos():void{
+    this.clienteService.getTelefonos(this.cliente.idCliente).subscribe((data) =>{
+      this.listaTelefonos = data;
+      console.log(this.listaTelefonos);
+    })
+  }
+  onDirecciones():void{
+    this.clienteService.getDirecciones(this.cliente.idCliente).subscribe((data) =>{
+      this.listaDirecciones = data;
+      console.log(this.listaDirecciones);
+    })
+  }
+
+  onAddTelefono():void{
+    this.clienteService.addTelefono(this.telefonoNuevo).subscribe({
+      next: (data) => {
+        Swal.fire({
+        icon: 'success',
+        title: '¡Has agregado una nuevo Teléfono a ' + this.cliente.nombre})
+      this.telefonoNuevo.telefono=0},
+      error: (err) =>{
+        Swal.fire({
+        icon: 'error',
+        title: '¡Algo ha salido mal!',
+        text: err.error})}
+    })
+  }
+  onAddDireccion():void{
+    this.clienteService.addDireccion(this.direccionNueva).subscribe({
+      next: (data) => {
+        Swal.fire({
+        icon: 'success',
+        title: '¡Has agregado una nueva Dirección a ' + this.cliente.nombre})
+      this.direccionNueva.canton="", this.direccionNueva.distrito="", this.direccionNueva.provincia=""},
+      error: (err) =>{
+        Swal.fire({
+        icon: 'error',
+        title: '¡Algo ha salido mal!',
+        text: err.error})}
+    })
+  }
+
   onSubmit(): void{
-    this.clienteService.guardarCliente(this.cliente).subscribe(res => {alert("Success")})
+    this.clienteService.guardarCliente(this.cliente).subscribe({
+      next: (data) => {
+        Swal.fire({
+        icon: 'success',
+        title: '¡Has agregado a ' + this.cliente.nombre + ' como Cliente'})
+      this.route.navigate(['clientes'])},
+      error: (err) =>{
+        Swal.fire({
+        icon: 'error',
+        title: '¡Algo ha salido mal!',
+        text: err.error})}
+    })
   }
 
 }
+

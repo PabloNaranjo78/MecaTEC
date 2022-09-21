@@ -36,7 +36,7 @@ export class CitasComponent implements OnInit {
   }
 
   esValido(object:any){
-    if (object.fechaCita==""){
+    if (object.idCliente==""){
       return false;
     }
     return true;

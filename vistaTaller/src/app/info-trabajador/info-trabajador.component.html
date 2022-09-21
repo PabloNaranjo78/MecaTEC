@@ -1,1 +1,57 @@
-<p>info-trabajador works!</p>
+<div class="container-fluid">
+    <div class="row my-3">
+      
+      <div class="col-1">
+      </div>
+      <div class="col"> 
+        <div class="row my-3">  
+          <h2 class = "fw-bold offset-md-1">Información de Trabajador</h2>
+        </div>
+        <form #form="ngForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+  
+              <div class="col text-center">
+                <div class="row mt-4 right"><label for = "name" class="form-label">Nombre</label></div>
+                <div class="row mt-4 right"><label for = "lastName" class="form-label">Apellidos</label></div>
+                <div class="row mt-4 right"><label for = "cedula" class="form-label">Cédula</label></div>
+                <div class="row mt-4 right"><label for = "password" class="form-label">Contraseña</label></div>
+              </div>
+              <div class="col">  
+                <div class="row mt-4"><input type = "text" class="form-control" name = "name" [(ngModel)] = "trabajador.nombre"></div>
+                <div class="row mt-4"><input type = "text" class="form-control" name = "lastName" [(ngModel)] = "trabajador.apellidos"></div>
+                <div class="row mt-4"><input type = "number" class="form-control" name = "cedula" [(ngModel)] = "trabajador.idTrabajador"></div>
+                <div class="row mt-4"><input type = "text" class="form-control" name = "password" [(ngModel)] = "trabajador.password"></div>
+              </div>
+              <div class="col-1"></div>
+              
+              <div class="col text-center">
+                <div class="row mt-4 right gy-4"><label for = "rol" class="form-label">Rol</label></div>
+                <div class="row mt-4 right"><label for = "fechaIngreso" class="form-label">Fecha de Ingreso</label></div>
+                <div class="row mt-4 right"><label for = "fechaNacimiento" class="form-label">Fecha de Nacimiento</label></div>
+              </div>
+              <div class="col">
+                <div class="row mt-4 gy-4">
+                    <select class="form-select" name = "rol" [(ngModel)] = "trabajador.rol" aria-label="Default select example">
+                        <option value ="Mecanico">Mecanico</option>
+                        <option value ="Ayudante de Mecanico">Ayudante de Mecanico</option>
+                        <option value ="Detallador">Detallador</option>
+                        <option value ="Gerente de Sucursal">Gerente de Sucursal</option>
+                    </select>
+                </div>
+                <div class="row mt-4"><input type = "date" class="form-control" name = "fechaIngreso" [(ngModel)] = "trabajador.fechaIngreso"></div>
+                <div class="row mt-4"><input type = "date" class="form-control" name = "fechaNacimiento" [(ngModel)] = "trabajador.fechaNacimiento"></div>
+            </div>
+  
+            </div>
+            <div class="row my-5">
+              <div class="col"></div>
+              <div class="col text-center offset-md-1"> <button type="submit" class="btn btn-outline-primary"> Guardar </button> </div>
+              <div class="col text-center"> <a role="button" type="button" href="/clientes" class="btn can btn-primary"> Cancelar </a></div>
+              <div class="col"></div>
+            </div>
+          </form>
+      </div>
+      <div class="col-2">
+      </div>
+    </div>
+  </div>

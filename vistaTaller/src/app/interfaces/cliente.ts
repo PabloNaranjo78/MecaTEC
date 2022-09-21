@@ -7,4 +7,16 @@ export interface Cliente {
     email:string
 }
 
+export interface Telefono{
+    idCliente:number,
+    telefono:number
+}
+
+export interface Direccion{
+    idCliente:number,
+    provincia:string,
+    canton:string,
+    distrito:string
+}
+
 

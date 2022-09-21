@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 import { Cita, Servicio, Sucursal } from '../interfaces/cita';
 import { Cliente} from '../interfaces/cliente';
 import { CitaService } from '../services/cita.service';
@@ -43,7 +44,18 @@ export class InfoCitaComponent implements OnInit {
   
 
   onSubmit(): void{
-    this.citasService.guardarCita(this.cita).subscribe(res => {alert("Success")})
+    this.citasService.guardarCita(this.cita).subscribe({
+      next: (data) => {
+        Swal.fire({
+        icon: 'success',
+        title: 'Cita guarda existosamente para '+ this.cita.placa + ' el ' + this.cita.fechaCita});
+      this.route.navigate(['citas'])},
+      error: (err) =>{
+        Swal.fire({
+        icon: 'error',
+        title: '¡Algo ha salido mal!',
+        text: err.error})}
+      })
   }
-
 }
+

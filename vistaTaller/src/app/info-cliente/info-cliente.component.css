@@ -1,4 +1,11 @@
 
+.form-control{
+    border-radius: 0;
+    width: 100%;
+}
+.style{
+    border-bottom: black solid 1px;
+}
 
 .form-label{
     font-size:larger;
