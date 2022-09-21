@@ -27,8 +27,8 @@ class Appointment : AppCompatActivity() {
         val saveButton = findViewById<Button>(R.id.btn_saveAppointment)
         val cancelButton = findViewById<Button>(R.id.btn_cancelAppointment)
         val picker = findViewById<DatePicker>(R.id.date_picker)
-        val subsidiaries = listOf("San Francisco", "Los Angeles", "New York")
-        val services = listOf("Oil Change", "New Tint", "Engine Change")
+        val subsidiaries = listOf("Cartago", "Oreamuno", "Pinares", "Rio Loro", "Ciudad de Panama")
+        val services = listOf("Oil Change", "Alignement", "10K Check", "20K Check", "Transfer Check", "Balance","Alignement")
 
         var selectedService = ""
         var selectedSubsidiary = ""

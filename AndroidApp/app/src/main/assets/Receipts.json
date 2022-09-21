@@ -1,6 +1,6 @@
 {
-  "Fernando": [{"receipt_num": 1, "price": 3500, "detail": "New Tyres"},{"receipt_num": 2, "price": 5000, "detail": "New Engine"}],
-  "Pablo": [{"receipt_num": 1, "price": 2500, "detail": "New Window"},{"receipt_num": 2, "price": 5000, "detail": "New Suspension"}],
-  "Joel": [{"receipt_num": 1, "price": 1500, "detail": "New Seats"},{"receipt_num": 2, "price": 5000, "detail": "New Mirror"}],
-  "Andy": [{"receipt_num": 1, "price": 7500, "detail": "New Shifter"},{"receipt_num": 2, "price": 5000, "detail": "New Love"}]
+  "Fernando": [{"receipt_num": 1, "price": 3500, "detail": "Oil Change"},{"receipt_num": 2, "price": 5000, "detail": "Transfer Check"}],
+  "Pablo": [{"receipt_num": 1, "price": 2500, "detail": "10K Check"},{"receipt_num": 2, "price": 5000, "detail": "Alignement"}],
+  "Joel": [{"receipt_num": 1, "price": 1500, "detail": "Transfer Check"},{"receipt_num": 2, "price": 5000, "detail": "20K Check"}],
+  "Andy": [{"receipt_num": 1, "price": 7500, "detail": "Alignement"},{"receipt_num": 2, "price": 5000, "detail": "Oil Change"}]
 }
