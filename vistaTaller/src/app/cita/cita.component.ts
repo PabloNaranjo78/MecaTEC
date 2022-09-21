@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cita.component.css']
 })
 export class CitaComponent implements OnInit {
+  
   mensaje="";
   registrado=false;
   nombre:String="";

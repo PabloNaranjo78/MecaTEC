@@ -8,14 +8,20 @@ import { Cita } from '../interfaces/cita';
   styleUrls: ['./citas.component.css']
 })
 export class CitasComponent implements OnInit {
+
   listaCitas:Cita[];
+  /*Crea filas de 5 unidades a partir de índice
+  valor:number 
+  return: boolean*/
   crearFila(valor:number){
     if (valor%5==0){
       return true;
     }
     return false;
   }
-
+  /*Rellena la lista con elementos nulos para conservar el espaciado
+  valor:number
+  return: list*/
   subLista(valor:number){
     var sub=[];
     if(valor+5 > this.listaCitas.length){
@@ -35,6 +41,9 @@ export class CitasComponent implements OnInit {
     return sub;
   }
 
+  /*Valida si el objeto tiene un idCliente Valido 
+  objeto: Cita[]
+  return: boolean*/
   esValido(object:any){
     if (object.idCliente==""){
       return false;
@@ -46,7 +55,8 @@ export class CitasComponent implements OnInit {
     
   }
 
-  
+  /*Constructor de la clase, servicio de citas inyectado 
+  Consulta todas las citas disponibles a la base de datos*/
   constructor(private citaServices:CitaService) {
     citaServices.getAllCitas().subscribe((data) =>{
       this.listaCitas = data

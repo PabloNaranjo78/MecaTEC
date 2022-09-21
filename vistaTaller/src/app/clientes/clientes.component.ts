@@ -10,13 +10,18 @@ import { Cliente } from '../interfaces/cliente';
 export class ClientesComponent implements OnInit {
   listaClientes: Cliente[];
 
+  /*Crea filas de 5 unidades a partir de índice
+  valor:number 
+  return: boolean*/
   crearFila(valor:number){
     if (valor%5==0){
       return true;
     }
     return false;
   }
-
+  /*Rellena la lista con elementos nulos para conservar el espaciado
+  valor:number
+  return: list*/
   subLista(valor:number){
     var sub=[];
     if(valor+5 > this.listaClientes.length){
@@ -37,13 +42,17 @@ export class ClientesComponent implements OnInit {
     return sub;
   }
 
+  /*Valida si el objeto tiene un idCliente Valido 
+  objeto: Cliente[]
+  return: boolean*/
   esValido(object:any){
     if (object.nombre==""){
       return false;
     }
     return true;
   }
-
+/*Constructor de la clase, servicio de citas inyectado 
+  Consulta todas los clientes disponibles a la base de datos*/
   constructor(clienteService:ClienteService) {
     clienteService.getAllClientes().subscribe((data) =>{
       this.listaClientes = data

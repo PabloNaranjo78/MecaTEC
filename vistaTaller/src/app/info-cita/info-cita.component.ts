@@ -12,6 +12,8 @@ import { ClienteService } from '../services/cliente.service';
   styleUrls: ['./info-cita.component.css']
 })
 export class InfoCitaComponent implements OnInit {
+  /*Cita temporal que alberga las modificaciones en el formulario
+   object: Cita*/
   cita:Cita={
     placa:0,
     fechaCita:"",
@@ -20,20 +22,24 @@ export class InfoCitaComponent implements OnInit {
     sucursal:"",
     idCliente:0
   }
+  /*Listas contenedoras de la data consultada en la base de datos*/
   listaClientes:Cliente[]
   listaServicios:Servicio[]
   listaSucursales:Sucursal[]
   servicio=""
 
-  
+  /*Constructor de Componente, con servicio de consulta de cliente, citas y routering 
+  return void()*/
   constructor(private clienteService:ClienteService, private citasService:CitaService, private route:Router) {
-    
+    /*Request a los servicios de clientes con base de datos almacenados en variable local*/
     clienteService.getAllClientes().subscribe((data) =>{
       this.listaClientes = data
     })
+    /*Request a los servicios de servicios con base de datos almacenados en variable local*/
     citasService.getAllServicios().subscribe((data) =>{
       this.listaServicios = data
     })
+    /*Request a los servicios de sucursales con base de datos almacenados en variable local*/
     citasService.getAllSucursales().subscribe((data) =>{
       this.listaSucursales = data
     })
@@ -42,14 +48,16 @@ export class InfoCitaComponent implements OnInit {
   ngOnInit(): void {
   }
   
-
+  /*Llamada desde el botón "Guardar" de la cita" envía un POST request al server */
   onSubmit(): void{
     this.citasService.guardarCita(this.cita).subscribe({
+      /*Mensaje emergente de exito*/
       next: (data) => {
         Swal.fire({
         icon: 'success',
         title: 'Cita guarda existosamente para '+ this.cita.placa + ' el ' + this.cita.fechaCita});
       this.route.navigate(['citas'])},
+      /*Mensaje emergente de error*/
       error: (err) =>{
         Swal.fire({
         icon: 'error',
