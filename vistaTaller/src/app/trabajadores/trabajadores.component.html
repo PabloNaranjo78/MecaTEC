@@ -11,7 +11,7 @@
                     <ng-template ngFor let-trabajador [ngForOf] = "subLista(i)">
                         <div class="col">
                             <div class="container gy-1" *ngIf="esValido(trabajador)">
-                                Cliente
+                                Trabajador
                                 <div class="row mt-1"><h2>{{trabajador.nombre}}</h2></div>
                                 <div class="row mt-2"><p> {{trabajador.idTrabajador}}</p></div>
                                 <button [routerLink]="['/trabajador',trabajador.idTrabajador]" type="submit" class="btn btn-outline-primary"> EDITAR </button>
