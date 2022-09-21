@@ -1,5 +1,9 @@
 ﻿namespace BaseDatosAdmin.Base_de_datos.Trabajador
 {
+    /// <summary>
+    /// Clase encargada de generar la instancia de lista, hereda de entidad y
+    /// envía el tipo de clase con la cual se desea trabajar en la clase genérica Entidad
+    /// </summary>
     public class TrabajadorList : Entidad<Trabajador>
     {
         public TrabajadorList (): base("Trabajador/Trabajador.json")
@@ -9,6 +13,10 @@
 
     }
 
+    /// <summary>
+    /// Clase trabajador, posee los parámetros necesarios para crear las listas
+    /// que se guardarán en la base de datos.
+    /// </summary>
     public class Trabajador
     {
         public int idTrabajador { get; set; }
